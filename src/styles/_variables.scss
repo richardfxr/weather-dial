@@ -1,0 +1,37 @@
+// Partial SCSS file containing variables
+
+// === USE ====================================
+@use 'colors' as *;
+
+/* ============================================
+   VARIABLES
+   ============================================ */
+
+:root {
+    --pad-hrz: 60px;
+    --pad-dial: 8%;
+
+    --border-thin: 2px;
+    --bradius-circle: 9e5px;
+
+    --maxWidth: 2000px;
+    --nav-size: 230px;
+    --twoCol-minWidth: 30em;
+
+    /* === COLORS ============================= */
+
+    /* light theme (default) */
+    // parse $light into CSS variables
+    @each $name, $value in $light {
+        --clr-#{$name}: #{$value};
+    }
+
+    --clr-accent-800: var(--clr-am-800);
+    --clr-accent-700: var(--clr-am-700);
+    --clr-accent-highlight: var(--clr-am-highlight);
+    --clr-accent-shadow: var(--clr-am-shadow);
+    --clr-accent-bar-100: var(--clr-am-bar-100);
+    --clr-accent-bar-0: var(--clr-am-bar-0);
+    --clr-accent-separator: var(--clr-am-separator);
+}
+

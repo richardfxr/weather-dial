@@ -1,0 +1,20 @@
+// Partial SCSS file containing color variables
+
+// ============================================
+// COLORS
+// ============================================
+
+// === LIGHT THEME ========================
+$light: (
+    100: #E2D7CF,
+    100trans: rgba(226, 215, 207, 0%),
+    0: #FFFFFF,
+
+    am-800: #D4401C,
+    am-700: #E55B39,
+    am-highlight: #FFA55C,
+    am-shadow: #C4154B,
+    am-bar-100: rgba(209, 44, 0, 20%),
+    am-bar-0: rgba(229, 91, 57, 0%),
+    am-separator: rgba(255, 167, 143, 50%),
+)

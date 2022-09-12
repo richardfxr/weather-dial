@@ -1,0 +1,10 @@
+// Partial SCSS file forwarding all partials under 'styles'
+// prepended to every component in svelte.config.js as *
+
+
+
+// === FORWARD ================================\
+@forward 'global';
+@forward 'resets';
+// @forward 'typefaces';
+@forward 'variables';

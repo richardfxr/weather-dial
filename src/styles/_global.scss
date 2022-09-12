@@ -1,0 +1,51 @@
+// Partial SCSS file containing global CSS styles
+
+// === USE ====================================
+@use 'variables' as *;
+
+// === IMPORTS ================================
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap');
+
+/* ============================================
+GLOBAL
+============================================ */
+
+:global(*) {
+    font-family: 'Inter', sans-serif;
+}
+
+:global(body) {
+    background-color: var(--clr-100);
+}
+
+#main {
+    max-width: var(--maxWidth);
+
+    padding: 
+        0
+        var(--pad-hrz)
+        0
+        calc(var(--nav-size) + (var(--pad-hrz) / 2));
+    margin: 0 auto;
+
+    &.twoCol {
+        display: grid;
+        grid-template-columns: repeat(auto-fit,minmax(var(--twoCol-minWidth),1fr));
+        gap: var(--pad-hrz);
+
+        min-height: 100vh;
+    }
+}
+
+/* utility */
+.visuallyHidden {
+    /* elements with this class will not be displayed visually but still be read by screen readers */
+    clip: rect(1px, 1px, 1px, 1px);
+    clip-path: inset(50%);
+    height: 1px;
+    width: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+}
