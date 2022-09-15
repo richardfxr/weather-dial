@@ -1,4 +1,7 @@
 <script>
+    /* === IMPROTS ============================ */
+    import { period, hours, minutes } from '../store/store.js';
+
     /* === PROPS ============================== */
     export let title;
     export let dataPoints;
@@ -14,16 +17,14 @@
         if (largestData < dataPoint) largestData = dataPoint
         if (smallestData > dataPoint) smallestData = dataPoint
     });
-    range = largestData - smallestData
-
-    $: period = 'AM';
+    range = largestData - smallestData;
 </script>
 
 <div id="dial__container">
     <div id="dial">
         <div aria-hidden="true" id="cross"></div>
         <div aria-hidden="true" id="outerCircle"></div>
-        <div aria-hidden="true" id="clock"></div>
+        <div aria-hidden="true" id="clock" style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg"></div>
         <table style="--range: {range};">
             <caption class="visuallyHidden">{title}</caption>
             <thead>
@@ -45,6 +46,8 @@
                 {/each}
             </tbody>
         </table>
+        <div>{$hours}</div>
+        <div>{$minutes}</div>
     </div>
 </div>
 
@@ -55,7 +58,7 @@
         top: 0;
 
         // background-color: beige;
-        height: 100vh;
+        min-height: 100vh;
         overflow: auto;
     }
 
@@ -163,7 +166,7 @@
             border: solid var(--border-thin) var(--clr-0);
             border-radius: var(--bradius-circle);
 
-            // transform: rotate(239deg);
+            transform: rotate(var(--timeRotation));
 
             &::before {
                 // circle time indicator on outer cirlce
@@ -288,7 +291,8 @@
                     font-size: 1.4rem;
                     font-weight: 600;
                     text-align: center;
-                    clip-path: polygon(50% 50%, 36.60254% 0, 63.39746% 0);
+
+                    transform: rotate(15deg);
 
                     &::before {
                         // data bar
@@ -314,28 +318,30 @@
                         background-position: center center;
                         border: solid var(--border-thin) var(--clr-0);
                         border-radius: var(--bradius-circle);
+
+                        clip-path: polygon(50% 50%, 36.60254% 0, 63.39746% 0);
                     }
+                }
 
-                    &::after {
-                        // separator
-                        --_pad-top: 10%;
+                &:nth-child(-n+6) td.data::after {
+                    // separator (only first 6 td.data have it)
+                    --_pad-top: 9.32%;
 
-                        content: '';
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        bottom: 0;
-                        left: 0;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
 
-                        height: calc(100% - 2 * var(--_pad-top));
-                        width: var(--border-thin);
+                    height: calc(100% - 2 * var(--_pad-top));
+                    width: var(--border-thin);
 
-                        margin: var(--_pad-top) auto;
+                    margin: var(--_pad-top) auto;
 
-                        background-color: var(--clr-accent-separator);
+                    background-color: var(--clr-accent-separator);
 
-                        transform: rotate(15deg);
-                    }
+                    transform: rotate(15deg);
                 }
             }
         }
@@ -346,6 +352,7 @@
         #dial__container {
             height: unset;
             overflow: visible;
+            min-height: unset;
 
             margin: 0 calc(-1 * var(--pad-hrz));
         }
