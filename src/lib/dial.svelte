@@ -51,7 +51,6 @@
 <style lang="scss">
     #dial__container {
         display: flex;
-        align-items: center;
         position: sticky;
         top: 0;
 
@@ -67,6 +66,7 @@
         
         padding-top: 100%;
         // background: coral;
+        margin: auto;
         overflow: hidden;
 
         #cross {
@@ -180,7 +180,7 @@
                 background-color: var(--clr-accent-700);
                 border-radius: var(--bradius-circle);
 
-                transform: translateY(-150%);
+                transform: translateY(-240%);
             }
 
             &::after {
@@ -247,7 +247,7 @@
                     bottom: 0;
                     left: 0;
 
-                    margin-bottom: 93%;
+                    margin-bottom: 95%;
 
                     color: var(--clr-accent-800);
                     font-size: 1.3rem;
@@ -335,6 +335,71 @@
                         background-color: var(--clr-accent-separator);
 
                         transform: rotate(15deg);
+                    }
+                }
+            }
+        }
+    }
+
+    /* === BREAKPOINTS ======================== */
+    @media (orientation: portrait) {
+        #dial__container {
+            height: unset;
+            overflow: visible;
+
+            margin: 0 calc(-1 * var(--pad-hrz));
+        }
+
+        #dial {
+            
+        }
+    }
+    @media only screen and (max-width: $breakpoint-smdesktop) {
+        #dial {
+            table {
+                #units {
+                    --_size: 95px;
+
+                    font-size: 1.6rem;
+                }
+
+                tbody tr {
+                    td.hour {
+                        font-size: 1.2rem;
+
+                        &::before {
+                            margin-bottom: -2.5%;
+                        }
+                    }
+
+                    td.data {
+                        font-size: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        #dial {
+            table {
+                #units {
+                    --_size: 75px;
+
+                    font-size: 1.3rem;
+                }
+
+                tbody tr {
+                    td.hour {
+                        font-size: 1rem;
+
+                        &::before {
+                            margin-bottom: -2.8%;
+                        }
+                    }
+
+                    td.data {
+                        font-size: 1.1rem;
                     }
                 }
             }

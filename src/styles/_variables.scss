@@ -7,16 +7,29 @@
    VARIABLES
    ============================================ */
 
+// === BREAKPOINTS ============================
+$breakpoint-smdesktop: 1450px;
+$breakpoint-tablet: 1250px;
+$breakpoint-mobile: 650px;
+
 :root {
     --pad-hrz: 60px;
-    --pad-dial: 8%;
+    --pad-dial: 6%;
+    --pad-sm: 17px;
+    --pad-xs: 10px;
+    --pad-xxs: 6px;
 
     --border-thin: 2px;
     --bradius-circle: 9e5px;
 
     --maxWidth: 2000px;
-    --nav-size: 230px;
     --twoCol-minWidth: 30em;
+
+    --nav-a-size: 75px;
+    --nav-margin-1: 32px;
+    --nav-margin-2: 8px;
+    --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
+
 
     /* === COLORS ============================= */
 
@@ -35,3 +48,42 @@
     --clr-accent-separator: var(--clr-am-separator);
 }
 
+
+
+/* ========================================
+    BREAKPOINTS
+    ======================================== */
+@media (orientation: portrait) {
+    :root {
+        --maxWidth: 860px;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-smdesktop) {
+    :root {
+        --pad-hrz: 35px;
+        --pad-sm: 15px;
+        --pad-xs: 8px;
+        --pad-xxs: 5px;
+
+        --twoCol-minWidth: 25em;
+
+        --nav-a-size: 68px;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-tablet) {
+    :root {
+        --pad-hrz: 20px;
+        --pad-sm: 14px;
+        --pad-xs: 7px;
+        --pad-xxs: 5px;
+
+        --twoCol-minWidth: 18em;
+
+        --nav-a-size: 65px;
+        --nav-margin-1: 24px;
+        --nav-margin-2: 6px;
+        --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.25 * var(--pad-hrz));
+    }
+}
