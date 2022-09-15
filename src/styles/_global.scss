@@ -19,6 +19,7 @@ GLOBAL
 }
 
 #main {
+    --_portrait-width: 50%; 
     --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 2));
 
     max-width: var(--maxWidth);
@@ -62,24 +63,36 @@ GLOBAL
 /* === BREAKPOINTS ======================== */
 @media (orientation: portrait) {
     #main {
-        padding-left: var(--pad-hrz);
+        gap: var(--pad-lg);
+        width: var(--_portrait-width);
+        max-width: calc(var(--maxWidth) * var(--_portrait-width));
+
+        padding: var(--pad-lg) var(--pad-hrz) 0 var(--pad-hrz);
+        margin: 0 auto;
 
         &.twoCol {
             grid-template-columns: 1fr;
 
             min-height: unset;
+
+            #text__col {
+                justify-content: center;
+                padding-left: 0;
+            }
         }
     }
 }
 
 @media only screen and (max-width: $breakpoint-smdesktop) {
     #main {
+        --_portrait-width: 70%; 
         --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 3));
     }
 }
 
 @media only screen and (max-width: $breakpoint-smdesktop) {
     #main {
+        --_portrait-width: 100%; 
         --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 4));
     }
 }

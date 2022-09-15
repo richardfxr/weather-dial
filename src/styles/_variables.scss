@@ -13,17 +13,19 @@ $breakpoint-tablet: 1250px;
 $breakpoint-mobile: 650px;
 
 :root {
-    --pad-hrz: 60px;
+    --pad-hrz: 70px;
     --pad-dial: 6%;
+    --pad-lg: 35px;
+    --pad-md: 25px;
     --pad-sm: 17px;
     --pad-xs: 10px;
     --pad-xxs: 6px;
 
-    --border-thin: 2px;
+    --border-thin: 1.5px;
     --bradius-circle: 9e5px;
 
     --maxWidth: 2000px;
-    --twoCol-minWidth: 30em;
+    --twoCol-minWidth: 22em;
 
     --nav-a-size: 75px;
     --nav-margin-1: 32px;
@@ -62,11 +64,13 @@ $breakpoint-mobile: 650px;
 @media only screen and (max-width: $breakpoint-smdesktop) {
     :root {
         --pad-hrz: 35px;
+        --pad-lg: 30px;
+        --pad-md: 22px;
         --pad-sm: 15px;
         --pad-xs: 8px;
         --pad-xxs: 5px;
 
-        --twoCol-minWidth: 25em;
+        --twoCol-minWidth: 23em;
 
         --nav-a-size: 68px;
     }
@@ -74,7 +78,9 @@ $breakpoint-mobile: 650px;
 
 @media only screen and (max-width: $breakpoint-tablet) {
     :root {
-        --pad-hrz: 20px;
+        --pad-hrz: 25px;
+        --pad-lg: 28px;
+        --pad-md: 21px;
         --pad-sm: 14px;
         --pad-xs: 7px;
         --pad-xxs: 5px;
