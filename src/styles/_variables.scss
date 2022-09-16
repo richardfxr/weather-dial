@@ -32,6 +32,8 @@ $breakpoint-mobile: 650px;
     --nav-margin-2: 8px;
     --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
 
+    --trans-time-normal: 0.3s;
+    --trans-normal: var(--trans-time-normal) ease;
 
     /* === COLORS ============================= */
 
@@ -41,13 +43,21 @@ $breakpoint-mobile: 650px;
         --clr-#{$name}: #{$value};
     }
 
+    // AM accent colors
     --clr-accent-800: var(--clr-am-800);
     --clr-accent-700: var(--clr-am-700);
     --clr-accent-highlight: var(--clr-am-highlight);
     --clr-accent-shadow: var(--clr-am-shadow);
-    --clr-accent-bar-100: var(--clr-am-bar-100);
-    --clr-accent-bar-0: var(--clr-am-bar-0);
     --clr-accent-separator: var(--clr-am-separator);
+}
+
+:global(.pm) {
+    // PM accent colors
+    --clr-accent-800: var(--clr-pm-800);
+    --clr-accent-700: var(--clr-pm-700);
+    --clr-accent-highlight: var(--clr-pm-highlight);
+    --clr-accent-shadow: var(--clr-pm-shadow);
+    --clr-accent-separator: var(--clr-pm-separator);
 }
 
 
