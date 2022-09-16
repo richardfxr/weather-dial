@@ -7,17 +7,10 @@
     export let dataPoints;
     export let units;
 
-    /* === VARIABLES ========================== */
-    let largestData = dataPoints[0];
-    let smallestData = dataPoints[0];
-    let range = 0;
-
-    // loop through dataPoints to get largest and smallest
-    dataPoints.forEach(dataPoint => {
-        if (largestData < dataPoint) largestData = dataPoint
-        if (smallestData > dataPoint) smallestData = dataPoint
-    });
-    range = largestData - smallestData;
+    /* === REACTIVE DECLARATIONS ============== */
+    $: largestData = Math.max(...dataPoints);
+    $: smallestData = Math.min(...dataPoints);
+    $: range = largestData - smallestData;
 </script>
 
 <div id="dial__container">
@@ -29,7 +22,6 @@
             id="clock--PM"
             class="clock"
             class:inactive={$period !== "PM"}
-            class:hidden={$selectedPeriod !== "PM"}
             style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
         </div>
         <div
@@ -37,7 +29,6 @@
             id="clock--AM"
             class="clock"
             class:inactive={$period !== "AM"}
-            class:hidden={$selectedPeriod !== "AM"}
             style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
         </div>
         <table style="--range: {range};">
@@ -50,8 +41,16 @@
             </thead>
             <tbody>
                 {#each dataPoints as dataPoint, index}
-                    <tr style="--hour: {index}">
-                        <td class="hour ani-{index}">{index === 0 ? '12' : index}<span class="visuallyHidden">{period}</span></td>
+                    <tr 
+                        style="--hour: {index}"
+                        aria-current={$hours === index && $selectedPeriod === $period}>
+                        <td class="hour">
+                            {index === 0 ? '12' : index}
+                            <span class="visuallyHidden">{$period}</span>
+                            {#if $hours === index && $selectedPeriod === $period}
+                                <pre class="visuallyHidden"> (current)</pre>
+                            {/if}
+                        </td>
                         <td
                             class="data"
                             style="--absValue: {dataPoint - smallestData};">
@@ -61,8 +60,6 @@
                 {/each}
             </tbody>
         </table>
-        <div>{$hours}</div>
-        <div>{$minutes}</div>
     </div>
 </div>
 
