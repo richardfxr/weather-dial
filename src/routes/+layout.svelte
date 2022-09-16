@@ -1,11 +1,84 @@
 <script>
     /* === IMPORTS ============================ */
     import Nav from "../lib/nav.svelte";
+    import { fade } from 'svelte/transition';
+    import { selectedPeriod } from '../store/store.js';
+
+    /* === PROP =============================== */
+    export let data;
+
+    /* === VARIABLES ========================== */
+    const pageTransDuration = 200;
 </script>
 
-<Nav />
-<slot></slot>
+<div id="root" class:pm={$selectedPeriod === "PM"}>
+    <Nav />
+
+    <!-- page transition -->
+    <div class="pageTransition__wrapper">
+        {#key data.url.pathname}
+            <main id="main" in:fade={{ duration: 0, delay: pageTransDuration }} out:fade={{ duration: pageTransDuration }}>
+                <slot></slot>
+            </main>
+        {/key}
+    </div>
+</div>
 
 <style lang="scss">
-    
+    .pageTransition__wrapper {
+        // wrapper grid to prevent scrollbar from appearing during page transitions
+        display: grid;
+        grid-template: 1fr 1fr;
+    }
+
+    #main {
+        --_portrait-width: 50%; 
+        --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 2));
+
+        // forces #main into wrapper grid to prevent scrollbar
+        grid-row: 1;
+        grid-column: 1;
+        width: 100%;
+        max-width: var(--maxWidth);
+
+        padding: 
+            0
+            var(--pad-hrz)
+            0
+            var(--_pad-left);
+        margin: 0 auto;
+    }
+
+    /* === BREAKPOINTS ======================== */
+    @media (orientation: portrait) {
+        #main {
+            gap: var(--pad-lg);
+            width: var(--_portrait-width);
+            max-width: calc(var(--maxWidth) * var(--_portrait-width));
+
+            padding: var(--pad-lg) var(--pad-hrz) 0 var(--pad-hrz);
+            margin: 0 auto;
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-smdesktop) {
+        #main {
+            --_portrait-width: 60%; 
+            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 3));
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-tablet) {
+        #main {
+            --_portrait-width: 70%; 
+            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 4));
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+        #main {
+            --_portrait-width: 100%; 
+            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 5));
+        }
+    }
 </style>

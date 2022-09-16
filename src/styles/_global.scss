@@ -18,32 +18,18 @@ GLOBAL
     background-color: var(--clr-100);
 }
 
-#main {
-    --_portrait-width: 50%; 
-    --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 2));
+.twoCol {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(var(--twoCol-minWidth),1fr));
 
-    max-width: var(--maxWidth);
+    min-height: 100vh;
 
-    padding: 
-        0
-        var(--pad-hrz)
-        0
-        var(--_pad-left);
-    margin: 0 auto;
+    #text__col {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-    &.twoCol {
-        display: grid;
-        grid-template-columns: repeat(auto-fit,minmax(var(--twoCol-minWidth),1fr));
-
-        min-height: 100vh;
-
-        #text__col {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-
-            padding-left: var(--pad-hrz);
-        }
+        padding-left: var(--pad-hrz);
     }
 }
 
@@ -62,38 +48,14 @@ GLOBAL
 
 /* === BREAKPOINTS ======================== */
 @media (orientation: portrait) {
-    #main {
-        gap: var(--pad-lg);
-        width: var(--_portrait-width);
-        max-width: calc(var(--maxWidth) * var(--_portrait-width));
+    .twoCol {
+        grid-template-columns: 1fr;
 
-        padding: var(--pad-lg) var(--pad-hrz) 0 var(--pad-hrz);
-        margin: 0 auto;
+        min-height: unset;
 
-        &.twoCol {
-            grid-template-columns: 1fr;
-
-            min-height: unset;
-
-            #text__col {
-                justify-content: center;
-                padding-left: 0;
-            }
+        #text__col {
+            justify-content: center;
+            padding-left: 0;
         }
     }
 }
-
-@media only screen and (max-width: $breakpoint-smdesktop) {
-    #main {
-        --_portrait-width: 70%; 
-        --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 3));
-    }
-}
-
-@media only screen and (max-width: $breakpoint-smdesktop) {
-    #main {
-        --_portrait-width: 100%; 
-        --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 4));
-    }
-}
-

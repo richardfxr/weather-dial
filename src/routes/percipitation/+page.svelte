@@ -1,7 +1,7 @@
 <script>
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
-    import { hasSelectedPeriod, selectedPeriod } from '../store/store.js';
+    import { hasSelectedPeriod, selectedPeriod } from '../../store/store.js';
 
     /* === FUNCTIONS ========================== */
     function changePeriod(period) {
@@ -26,18 +26,12 @@
     </div>
 
     <div id='text__col'>
-        <h1>Temperature</h1>
+        <h1>Percipitation</h1>
         <button on:click={() => changePeriod("AM")}>AM</button>
         <button on:click={() => changePeriod("PM")}>PM</button>
     </div>
 </div>
 
 <style lang="scss">
-    #dial__col {
-        // background-color: Aquamarine;
-    }
-
-    #text__col {
-        // background-color: aqua;
-    }
+    
 </style>
