@@ -11,35 +11,35 @@
     }
 
     /* === TEST DATA ========================== */
-    const PerAm = [
-        [1, 2, 2, 3, 3, 4, 4, 4, 2, 1, 0, 0],
-        [6, 7, 7, 7, 7, 7, 7, 6, 4, 2, 1, 1],
+    const CloudAm = [
+        [15, 11, 10, 9, 19, 22, 17, 21, 25, 15, 17, 19],
+        [16, 23, 35, 35, 25, 29, 20, 21, 15, 14, 7, 9],
     ];
-    const PerPm = [
-        [0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 5, 5],
+    const CloudPm = [
+        [20, 21, 15, 15, 22, 20, 15, 12, 6, 8, 13, 13],
     ];
 
     /* === VERIABLES ========================== */
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curPerAm = PerAm[0];
-    $: curPerPm = PerPm[0];
-    $: curPer = $period === "AM" ? curPerAm : curPerPm;
-    $: selectedPer = $selectedPeriod === "AM" ? curPerAm : curPerPm;
+    $: curCloudAm = CloudAm[0];
+    $: curCloudPm = CloudPm[0];
+    $: curCloud = $period === "AM" ? curCloudAm : curCloudPm;
+    $: selectedCloud = $selectedPeriod === "AM" ? curCloudAm : curCloudPm;
 </script>
 
 <div class="twoCol">
     <div id="dial__col">
         <Dial
-            title="Precipitation"
-            dataPoints={selectedPer}
+            title="Cloud Cover"
+            dataPoints={selectedCloud}
             units={curUnits}
         />
     </div>
 
     <div id='text__col'>
-        <h1>Precipitation: {curPer[$hours]}{curUnits}</h1>
+        <h1>Cloud Cover: {curCloud[$hours]}{curUnits}</h1>
 
         <Radios
             groupName = "Period"

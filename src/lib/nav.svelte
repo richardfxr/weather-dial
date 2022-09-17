@@ -5,6 +5,7 @@
     /* === REACTIVE DECLARATIONS ============== */
     $: isHome = $page.url.pathname === "/";
     $: isPercipitation = $page.url.pathname === "/percipitation";
+    $: isCloudcover = $page.url.pathname === "/cloudcover";
     $: isHumidity = $page.url.pathname === "/humidity";
     $: isUv = $page.url.pathname === "/uv";
     $: isWind = $page.url.pathname === "/wind";
@@ -34,6 +35,16 @@
         </li>
         <li>
             <a
+                href="/cloud"
+                id="link__cloudcover"
+                class:active={isCloudcover}
+                aria-current={isCloudcover}>
+                <span class="visuallyHidden">Cloud Cover</span>
+                <div class="iconPH"></div>
+            </a>
+        </li>
+        <li>
+            <a
                 href="/humidity"
                 id="link__humidity"
                 class:active={isHumidity}
@@ -44,21 +55,21 @@
         </li>
         <li>
             <a
-                href="/uv"
-                id="link__uv"
-                class:active={isUv}
-                aria-current={isUv}>
-                <span class="visuallyHidden">UV Index</span>
-                <div class="iconPH"></div>
-            </a>
-        </li>
-        <li>
-            <a
                 href="/wind"
                 id="link__wind"
                 class:active={isWind}
                 aria-current={isWind}>
                 <span class="visuallyHidden">Wind Speed</span>
+                <div class="iconPH"></div>
+            </a>
+        </li>
+        <li>
+            <a
+                href="/uv"
+                id="link__uv"
+                class:active={isUv}
+                aria-current={isUv}>
+                <span class="visuallyHidden">UV Index</span>
                 <div class="iconPH"></div>
             </a>
         </li>
@@ -107,11 +118,11 @@
                 border: solid var(--border-thin) var(--clr-0);
                 border-radius: var(--bradius-circle);
 
-                &#link__home, &#link__wind {
+                &#link__home, &#link__uv {
                     margin-left: var(--nav-margin-1);
                 }
 
-                &#link__percipitation, &#link__uv {
+                &#link__percipitation, &#link__wind {
                     margin-left: var(--nav-margin-2);
                 }
 
@@ -143,12 +154,12 @@
 
                     padding: var(--pad-sm) var(--pad-xs);
 
-                    &#link__home, &#link__wind {
+                    &#link__home, &#link__uv {
                         margin-top: var(--nav-margin-1);
                         margin-left: 0;
                     }
 
-                    &#link__percipitation, &#link__uv {
+                    &#link__percipitation, &#link__wind {
                         margin-top: var(--nav-margin-2);
                         margin-left: 0;
                     }

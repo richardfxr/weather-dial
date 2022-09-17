@@ -11,35 +11,35 @@
     }
 
     /* === TEST DATA ========================== */
-    const PerAm = [
-        [1, 2, 2, 3, 3, 4, 4, 4, 2, 1, 0, 0],
-        [6, 7, 7, 7, 7, 7, 7, 6, 4, 2, 1, 1],
+    const HumidityAm = [
+        [66, 67, 70, 73, 74, 75, 77, 78, 69, 62, 54, 48],
+        [84, 88, 90, 91, 91, 92, 92, 88, 79, 71, 63, 59],
     ];
-    const PerPm = [
-        [0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 5, 5],
+    const HumidityPm = [
+        [44, 43, 42, 43, 45, 49, 55, 62, 68, 73, 77, 80],
     ];
 
     /* === VERIABLES ========================== */
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curPerAm = PerAm[0];
-    $: curPerPm = PerPm[0];
-    $: curPer = $period === "AM" ? curPerAm : curPerPm;
-    $: selectedPer = $selectedPeriod === "AM" ? curPerAm : curPerPm;
+    $: curHumidityAm = HumidityAm[0];
+    $: curHumidityPm = HumidityPm[0];
+    $: curHumidity = $period === "AM" ? curHumidityAm : curHumidityPm;
+    $: selectedHumidity = $selectedPeriod === "AM" ? curHumidityAm : curHumidityPm;
 </script>
 
 <div class="twoCol">
     <div id="dial__col">
         <Dial
-            title="Precipitation"
-            dataPoints={selectedPer}
+            title="Humidity"
+            dataPoints={selectedHumidity}
             units={curUnits}
         />
     </div>
 
     <div id='text__col'>
-        <h1>Precipitation: {curPer[$hours]}{curUnits}</h1>
+        <h1>Humidity: {curHumidity[$hours]}{curUnits}</h1>
 
         <Radios
             groupName = "Period"
