@@ -26,11 +26,16 @@ GLOBAL
 
     #text__col {
         display: flex;
-        flex-direction: row;
-        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        gap: var(--pad-md);
 
-        padding-left: var(--pad-hrz);
+        padding: var(--pad-lg) 0 var(--pad-lg) var(--pad-hrz);
     }
+}
+
+h1 {
+    font-size: var(--fontSize-h1);
 }
 
 /* utility */
@@ -54,7 +59,7 @@ GLOBAL
         min-height: unset;
 
         #text__col {
-            justify-content: center;
+            align-items: center;
             padding-left: 0;
         }
     }

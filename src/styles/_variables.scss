@@ -32,6 +32,8 @@ $breakpoint-mobile: 650px;
     --nav-margin-2: 8px;
     --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
 
+    --fontSize-h1: 2rem;
+
     --trans-time-normal: 0.3s;
     --trans-normal: var(--trans-time-normal) ease;
 
@@ -83,6 +85,8 @@ $breakpoint-mobile: 650px;
         --twoCol-minWidth: 23em;
 
         --nav-a-size: 68px;
+
+        --fontSize-h1: 1.7rem;
     }
 }
 
@@ -101,5 +105,7 @@ $breakpoint-mobile: 650px;
         --nav-margin-1: 24px;
         --nav-margin-2: 6px;
         --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.25 * var(--pad-hrz));
+
+        --fontSize-h1: 1.6rem;
     }
 }
