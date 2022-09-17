@@ -12,7 +12,7 @@
 
     /* === DISPATCHER ========================= */
     const dispatch = createEventDispatcher();
-	// function handleSelect(value) {
+    // function handleSelect(value) {
 	// 	dispatch('select', {
 	// 		value: value
 	// 	});
@@ -55,6 +55,7 @@
 
         display: flex;
         flex-flow: row wrap;
+        row-gap: calc(2 * var(--_accnet-pad));
 
         // padding for accent line
         padding-bottom: var(--_accnet-pad);
@@ -120,6 +121,10 @@
     @media (orientation: portrait) {
         .radios__container {
             align-items: center;
+        }
+
+        .radios {
+            justify-content: center;
         }
     }
 </style>
