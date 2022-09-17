@@ -33,6 +33,8 @@ $breakpoint-mobile: 650px;
     --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
 
     --fontSize-h1: 2rem;
+    --fontSize-lg: 1.5rem;
+    --fontSize-md: 1.25rem;
 
     --trans-time-normal: 0.3s;
     --trans-normal: var(--trans-time-normal) ease;
@@ -89,6 +91,8 @@ $breakpoint-mobile: 650px;
         --nav-a-size: 68px;
 
         --fontSize-h1: 1.7rem;
+        --fontSize-lg: 1.3rem;
+        --fontSize-md: 1.1rem;
     }
 }
 
@@ -111,6 +115,8 @@ $breakpoint-mobile: 650px;
         --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.25 * var(--pad-hrz));
 
         --fontSize-h1: 1.6rem;
+        --fontSize-lg: 1.2rem;
+        --fontSize-md: 1.05rem;
     }
 }
 
