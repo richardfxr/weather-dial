@@ -21,7 +21,7 @@ $breakpoint-mobile: 650px;
     --pad-xs: 10px;
     --pad-xxs: 6px;
 
-    --border-thin: 1.5px;
+    --border-thin: 1.7px;
     --bradius-circle: 9e5px;
 
     --maxWidth: 2000px;
@@ -82,6 +82,8 @@ $breakpoint-mobile: 650px;
         --pad-xs: 8px;
         --pad-xxs: 5px;
 
+        --border-thin: 1.5px;
+
         --twoCol-minWidth: 23em;
 
         --nav-a-size: 68px;
@@ -99,6 +101,8 @@ $breakpoint-mobile: 650px;
         --pad-xs: 7px;
         --pad-xxs: 5px;
 
+        --border-thin: 1.3px;
+
         --twoCol-minWidth: 18em;
 
         --nav-a-size: 65px;
@@ -107,5 +111,11 @@ $breakpoint-mobile: 650px;
         --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.25 * var(--pad-hrz));
 
         --fontSize-h1: 1.6rem;
+    }
+}
+
+@media only screen and (max-width: $breakpoint-mobile) {
+    :root {
+        --border-thin: 1px;
     }
 }

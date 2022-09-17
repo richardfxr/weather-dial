@@ -223,7 +223,7 @@
 
             &::before {
                 // circle time indicator on outer cirlce
-                --_size: 3%;
+                --_size: 2%;
 
                 content: '';
                 position: absolute;
@@ -234,7 +234,7 @@
 
                 border-radius: var(--bradius-circle);
 
-                transform: translateY(-190%);
+                transform: translateY(-255%);
             }
 
             &::after {
@@ -452,6 +452,11 @@
     }
     @media only screen and (max-width: $breakpoint-smdesktop) {
         #dial {
+            .clock::before {
+                --_size: 2.2%;
+                transform: translateY(-230%);
+            }
+
             table {
                 #units {
                     --_size: 95px;
@@ -478,6 +483,11 @@
 
     @media only screen and (max-width: $breakpoint-tablet) {
         #dial {
+            .clock::before {
+                --_size: 2.6%;
+                transform: translateY(-200%);
+            }
+
             table {
                 #units {
                     --_size: 75px;
@@ -494,6 +504,15 @@
                         font-size: 1.1rem;
                     }
                 }
+            }
+        }
+    }
+
+    @media only screen and (max-width: $breakpoint-mobile) {
+        #dial {
+            .clock::before {
+                --_size: 3%;
+                transform: translateY(-190%);
             }
         }
     }
