@@ -2,7 +2,7 @@
     /* === IMPORTS ============================ */
     import Nav from "../lib/nav.svelte";
     import { fade } from 'svelte/transition';
-    import { selectedPeriod } from '../store/store.js';
+    import { selectedPeriod, units } from '../store/store.js';
 
     /* === PROP =============================== */
     export let data;
@@ -11,7 +11,10 @@
     const pageTransDuration = 200;
 </script>
 
-<div id="root" class:pm={$selectedPeriod === "PM"}>
+<div 
+    id="root"
+    class:pm={$selectedPeriod === "PM"}
+    class:imp={$units === "imp"}>
     <Nav />
 
     <!-- page transition -->

@@ -7,6 +7,7 @@ export const hours = writable(12);
 export const minutes = writable(0);
 export const hasSelectedPeriod = writable(false);
 export const selectedPeriod = writable("AM");
+export const units = writable("met");
 
 /* === INTERNAL VARIABLES ================= */
 let _hasSelectedPeriod = false;
@@ -15,7 +16,7 @@ updateDate(); // update all date stores immedietly
 
 /* === LOCAL STORAGE ====================== */
 if (browser) {
-    
+    if (localStorage.units) units.set(localStorage.units);
 }
 
 /* === UPDATES ============================ */
@@ -43,10 +44,10 @@ hasSelectedPeriod.subscribe((value) => {
     _hasSelectedPeriod = value;
 });
 
-selectedPeriod.subscribe((value) => {
+units.subscribe((value) => {
     // prevent code from running on server
     if (!browser) return
 
     // set localStorage
-    document.documentElement.setAttribute("data-period", value);
+    localStorage.units = value;
 });
