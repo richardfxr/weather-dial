@@ -2,7 +2,7 @@
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
     import Radios from "$lib/radios.svelte";
-    import { period, hours, hasSelectedPeriod, selectedPeriod, units } from '../store/store.js';
+    import { period, hours, hasSelectedPeriod, selectedPeriod, units, tempType } from '../store/store.js';
 
     /* === HANDLERS =========================== */
     function handlePeriod(event) {
@@ -12,6 +12,10 @@
 
     function handleUnits(event) {
         units.set(event.detail.value);
+    }
+
+    function handleTempType(event) {
+        tempType.set(event.detail.value);
     }
 
     /* === TEST DATA ========================== */
@@ -53,8 +57,12 @@
     ];
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curTempAm = $units === "met" ? TempAmC[0] : TempAmF[0];
-    $: curTempPm = $units === "met" ? TempPmC[0] : TempPmF[0];
+    $: curTempAm = $units === "met" ?
+        $tempType === "actual" ? TempAmC[0] : TempFlAmC[0] :
+        $tempType === "actual" ? TempAmF[0] : TempFlAmF[0];
+    $: curTempPm = $units === "met" ?
+        $tempType === "actual" ? TempPmC[0] : TempFlPmC[0] :
+        $tempType === "actual" ? TempPmF[0] : TempFlPmF[0];
     $: curTemp = $period === "AM" ? curTempAm : curTempPm;
     $: selectedTemp = $selectedPeriod === "AM" ? curTempAm : curTempPm;
     $: curUnits = $units === "met" ? "°C" : "°F";
@@ -89,6 +97,15 @@
                 { name: "°F", value: "imp"},
             ]}
             on:select={handleUnits} />
+
+        <Radios
+            groupName = "Temperature Type"
+            bind:selected = {$tempType}
+            options = {[
+                { name: "Actual", value: "actual"},
+                { name: "Feels Like", value: "feelsLike"},
+            ]}
+            on:select={handleTempType} />
     </div>
 </div>
 

@@ -8,6 +8,7 @@ export const minutes = writable(0);
 export const hasSelectedPeriod = writable(false);
 export const selectedPeriod = writable("AM");
 export const units = writable("met");
+export const tempType = writable("actual");
 
 /* === INTERNAL VARIABLES ================= */
 let _hasSelectedPeriod = false;
@@ -17,6 +18,7 @@ updateDate(); // update all date stores immedietly
 /* === LOCAL STORAGE ====================== */
 if (browser) {
     if (localStorage.units) units.set(localStorage.units);
+    if (localStorage.tempType) tempType.set(localStorage.tempType);
 }
 
 /* === UPDATES ============================ */
@@ -50,4 +52,12 @@ units.subscribe((value) => {
 
     // set localStorage
     localStorage.units = value;
+});
+
+tempType.subscribe((value) => {
+    // prevent code from running on server
+    if (!browser) return
+
+    // set localStorage
+    localStorage.tempType = value;
 });
