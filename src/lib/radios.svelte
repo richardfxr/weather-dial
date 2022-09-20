@@ -6,34 +6,37 @@
     export let groupName;
     export let selected;
     export let options;
+    export let index;
 
     /* === VARIABLES ========================== */
     // let selected = initial;
 
     /* === DISPATCHER ========================= */
     const dispatch = createEventDispatcher();
-    // function handleSelect(value) {
-	// 	dispatch('select', {
-	// 		value: value
-	// 	});
-	// }
 </script>
 
-<div class="radios__container" role="radiogroup" aria-labelledby="{groupName}__label">
+<div
+    class="radios__container"
+    class:accent={groupName === "Period"}
+    role="radiogroup"
+    aria-labelledby="{groupName}__label"
+    style="--index: {index};">
     <h2 id="{groupName}__label">{groupName}</h2>
-    <div class="radios">
-        {#each options as {name, value}}
-            <label key={value}>
-                <input
-                    class="visuallyHidden"
-                    type="radio"
-                    bind:group={selected}
-                    on:click={()=> {dispatch('select', { value: selected })}}
-                    name={groupName}
-                    {value} />
-                <span>{name}</span>
-            </label>
-        {/each}
+    <div class="scroll__container">
+        <div class="radios">
+            {#each options as {name, value}}
+                <label key={value}>
+                    <input
+                        class="visuallyHidden"
+                        type="radio"
+                        bind:group={selected}
+                        on:click={()=> {dispatch('select', { value: selected })}}
+                        name={groupName}
+                        {value} />
+                    <span>{name}</span>
+                </label>
+            {/each}
+        </div>
     </div>
 </div>
 
@@ -41,78 +44,112 @@
     .radios__container {
         display: flex;
         flex-direction: column;
+        align-items: flex-start;
         gap: var(--pad-xxs);
 
         h2 {
             color: var(--clr-700);
             font-size: var(--fontSize-md);
             font-weight: 500;
+
+            padding-left: 5px;
+
+            animation: firstFade calc(0.8s + 0.2s * var(--index)) ease 1;
         }
     }
 
+    .scroll__container {
+        // max-width: 100%;
+        overflow-x: auto;
+    }
+
     .radios {
-        --_accnet-pad: calc(var(--pad-xs) + var(--border-thin));
-
         display: flex;
-        flex-flow: row wrap;
-        row-gap: calc(2 * var(--_accnet-pad));
+        flex-flow: row nowrap;
 
-        // padding for accent line
-        padding-bottom: var(--_accnet-pad);
+        padding: var(--pad-xxxs);
+        border: solid var(--border-thin) var(--clr-0);
+        border-radius: var(--bradius-circle);
 
-        label span {
-            display: block;
-            position: relative;
-            cursor: pointer;
+        animation: firstFade calc(0.9s + 0.2s * var(--index)) ease 1;
 
-            color: var(--clr-900);
-            font-size: var(--fontSize-lg);
-            font-weight: 700;
+        label {
+            --_input-pad-vertical: 6px;
+            --_input-pad-horizontal: 17px;
+            --_inpit-pad-end: 20px;
+            --_bradius-end: calc(var(--fontSize-lg) * 1.63 / 2 + var(--_input-pad-vertical));
 
-            padding: 6px 17px;
-            border-bottom: solid var(--border-thin) var(--clr-0);
+            span {
+                display: block;
+                position: relative;
+                cursor: pointer;
 
-            &::before {
-                // gradient background
-                content: '';
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: -1;
+                color: var(--clr-900);
+                font-size: var(--fontSize-lg);
+                font-weight: 700;
 
-                background: linear-gradient(
-                    180deg,
-                    var(--clr-50) 40%,
-                    var(--clr-20)
-                );
+                padding:
+                    var(--_input-pad-vertical)
+                    var(--_input-pad-horizontal)
+                    calc(var(--_input-pad-vertical) + var(--border-thin))
+                    var(--_input-pad-horizontal);
+                border-radius: var(--bradius-sm);
+                background-color: transparent;
 
-                opacity: 0;
-                transition: opacity var(--trans-normal);
+                transition: background-color var(--trans-normal);
+
+                &::before {
+                    // indicator line
+                    content: '';
+                    position: absolute;
+                    right: var(--_input-pad-horizontal);
+                    bottom: calc(var(--_input-pad-vertical) + var(--border-thin));
+                    left: var(--_input-pad-horizontal);
+                    height: var(--border-thin);
+
+                    border-radius: var(--bradius-circle);
+                    background-color: transparent;
+                }
+            }
+            
+            &:first-child span {
+                padding-left: var(--_inpit-pad-end);
+                border-radius: var(--_bradius-end) var(--bradius-sm) var(--bradius-sm) var(--_bradius-end);
+
+                &::before{
+                    // shift indicator to offset larger padding-left
+                    left: var(--_inpit-pad-end);
+                }
             }
 
-            &::after {
-                // accent line below
-                content: '';
-                position: absolute;
-                right: 0;
-                bottom: calc(-1 * var(--_accnet-pad));
-                left: 0;
-                height: var(--border-thin);
+            &:last-child span {
+                padding-right: var(--_inpit-pad-end);
+                border-radius: var(--bradius-sm) var(--_bradius-end) var(--_bradius-end) var(--bradius-sm);
 
-                background-color: var(--clr-accent-800);
-
-                opacity: 0;
-                transition: opacity var(--trans-normal);
+                &::before{
+                    // shift indicator to offset larger padding-right
+                    right: var(--_inpit-pad-end);
+                }
             }
         }
 
         input:checked ~ span {
             color: var(--clr-1000);
+            background-color: var(--clr-20);
+            
+            &::before {
+                background-color: var(--clr-accent-800);
+            }
+        }
+    }
 
-            &::before, &::after {
-                opacity: 1;
+    .accent {
+        .radios label input:checked ~ span {
+            color: var(--clr-0);
+            background-color: var(--clr-accent-700);
+
+            &::before {
+                background-color: var(--clr-0);
             }
         }
     }
@@ -121,10 +158,21 @@
     @media (orientation: portrait) {
         .radios__container {
             align-items: center;
+
+            h2 {
+                padding-left: 0;
+            }
         }
 
         .radios {
             justify-content: center;
         }
+    }
+
+    /* === ANIMATIONS ========================= */
+    @keyframes firstFade {
+        from { opacity: 0; }
+        50% { opacity: 0; }
+        to { opacity: 1; }
     }
 </style>

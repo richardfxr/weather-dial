@@ -47,12 +47,13 @@
         <h1>Precipitation: {curPer[$hours]}{curUnits}</h1>
 
         <Radios
-            groupName = "Period"
-            bind:selected = {$selectedPeriod}
-            options = {[
+            groupName="Period"
+            bind:selected={$selectedPeriod}
+            options={[
                 { name: "AM", value: "AM"},
                 { name: "PM", value: "PM"},
             ]}
+            index=0
             on:select={handlePeriod} />
     </div>
 </div>

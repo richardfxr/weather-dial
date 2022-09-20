@@ -37,6 +37,8 @@ GLOBAL
 /* typography */
 h1 {
     font-size: var(--fontSize-h1);
+
+    animation: h1Fade 0.7s ease 1;
 }
 
 h2 {
@@ -73,4 +75,11 @@ h2 {
     h1 {
         text-align: center;
     }
+}
+
+/* === ANIMATIONS ========================= */
+@keyframes h1Fade {
+    from { opacity: 0; }
+    40% { opacity: 0; }
+    to { opacity: 1; }
 }

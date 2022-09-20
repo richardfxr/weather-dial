@@ -100,30 +100,33 @@
         <h1>Temperature: {curTemp[$hours]}{curUnits}</h1>
 
         <Radios
-            groupName = "Period"
-            bind:selected = {$selectedPeriod}
-            options = {[
+            groupName="Period"
+            bind:selected={$selectedPeriod}
+            options={[
                 { name: "AM", value: "AM"},
                 { name: "PM", value: "PM"},
             ]}
+            index=0
             on:select={handlePeriod} />
 
         <Radios
-            groupName = "Units"
-            bind:selected = {$units}
-            options = {[
+            groupName="Units"
+            bind:selected={$units}
+            options={[
                 { name: "°C", value: "met"},
                 { name: "°F", value: "imp"},
             ]}
+            index=1
             on:select={handleUnits} />
 
         <Radios
-            groupName = "Temperature Type"
+            groupName="Temperature Type"
             bind:selected = {$tempType}
-            options = {[
+            options={[
                 { name: "Actual", value: "actual"},
                 { name: "Feels Like", value: "feelsLike"},
             ]}
+            index=2
             on:select={handleTempType} />
     </div>
 </div>

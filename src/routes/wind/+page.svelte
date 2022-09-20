@@ -64,21 +64,23 @@
         <h1>Wind Speed: {curWind[$hours]}{curUnits}</h1>
 
         <Radios
-            groupName = "Period"
-            bind:selected = {$selectedPeriod}
-            options = {[
+            groupName="Period"
+            bind:selected={$selectedPeriod}
+            options={[
                 { name: "AM", value: "AM"},
                 { name: "PM", value: "PM"},
             ]}
+            index=0
             on:select={handlePeriod} />
 
         <Radios
-            groupName = "Units"
-            bind:selected = {$units}
-            options = {[
+            groupName="Units"
+            bind:selected={$units}
+            options={[
                 { name: "km/h", value: "met"},
                 { name: "mph", value: "imp"},
             ]}
+            index=1
             on:select={handleUnits} />
     </div>
 </div>
