@@ -1,6 +1,6 @@
 <script>
     /* === IMPROTS ============================ */
-    import { period, hours, minutes, selectedPeriod } from '../store/store.js';
+    import { period, hours, minutes, selectedPeriod, selectedDate } from '../store/store.js';
 
     /* === PROPS ============================== */
     export let title;
@@ -19,16 +19,21 @@
         <div aria-hidden="true" id="outerCircle"></div>
         <div
             aria-hidden="true"
-            id="clock--PM"
             class="clock"
-            class:inactive={$period !== "PM"}
+            style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
+        </div>
+        <div
+            aria-hidden="true"
+            id="clock--PM"
+            class="clock__gradient"
+            class:inactive={$period !== "PM" || $selectedDate !== 0 || $selectedPeriod !== "PM"}
             style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
         </div>
         <div
             aria-hidden="true"
             id="clock--AM"
-            class="clock"
-            class:inactive={$period !== "AM"}
+            class="clock__gradient"
+            class:inactive={$period !== "AM" || $selectedDate !== 0 || $selectedPeriod !== "AM"}
             style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
         </div>
         <table style="--range: {range};">
@@ -167,94 +172,92 @@
             right: calc(var(--pad-dial) + var(--_pad));
             bottom: calc(var(--pad-dial) + var(--_pad));
             left: calc(var(--pad-dial) + var(--_pad));
+
+            background-color: var(--clr-accent-700);
             border: solid var(--border-thin) var(--clr-0);
             border-radius: var(--bradius-circle);
 
             transform: rotate(var(--timeRotation));
-            transition: opacity 0.6s ease;
+            transition: background-color 0.6s ease;
             animation: clockShrink 0.6s ease-out 1;
 
-            &#clock--PM {
-                z-index: -1;
+            &__gradient {
+                // conic gradient clock circles
+                --_pad: 8%;
 
-                background: conic-gradient(
-                    var(--clr-pm-shadow) 0deg,
-                    var(--clr-pm-700) 45deg,
-                    var(--clr-pm-700) 315deg,
-                    var(--clr-pm-highlight) 360deg
-                );
-
-                opacity: 0;
-
-                &::before {
-                    background-color: var(--clr-pm-700);
-                }
-
-                &.inactive {
-                    background: var(--clr-pm-700);
-                }
-            }
-
-            &#clock--AM {
-                z-index: 0;
-
-                background: conic-gradient(
-                    var(--clr-am-shadow) 0deg,
-                    var(--clr-am-700) 45deg,
-                    var(--clr-am-700) 315deg,
-                    var(--clr-am-highlight) 360deg
-                );
-
-                opacity: 1;
-                
-
-                &::before {
-                    background-color: var(--clr-am-700);
-                }
-
-                &.inactive {
-                    background: var(--clr-am-700);
-                }
-
-                &.hidden {
-                    opacity: var(--_opactiy);
-                }
-            }
-
-            &::before {
-                // circle time indicator on outer cirlce
-                --_size: 2%;
-
-                content: '';
                 position: absolute;
-                top: 0;
-                left: calc(50% - (var(--_size) / 2 ));
-                width: var(--_size);
-                height: var(--_size);
+                top: calc(var(--pad-dial) + var(--_pad));
+                right: calc(var(--pad-dial) + var(--_pad));
+                bottom: calc(var(--pad-dial) + var(--_pad));
+                left: calc(var(--pad-dial) + var(--_pad));
 
+                border: solid var(--border-thin) var(--clr-0);
                 border-radius: var(--bradius-circle);
 
-                transform: translateY(-255%);
-            }
+                transform: rotate(var(--timeRotation));
+                transition: opacity 0.6s ease;
+                animation: clockShrink 0.6s ease-out 1;
 
-            &::after {
-                // line to indicate time
-                content: '';
-                position: absolute;
-                top: 0;
-                bottom: 50%;
-                left: calc(50% - (var(--border-thin) / 2 ));
-                width: var(--border-thin);
+                &::before {
+                    // circle time indicator on outer cirlce
+                    --_size: 2%;
 
-                // hidden by default
-                display: none;
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    left: calc(50% - (var(--_size) / 2 ));
+                    width: var(--_size);
+                    height: var(--_size);
 
-                background-color: var(--clr-0);
-            }
+                    border-radius: var(--bradius-circle);
 
-            &.inactive{
-                &::before, &::after {
+                    transform: translateY(-255%);
+                }
+
+                &::after {
+                    // line to indicate time
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    bottom: 50%;
+                    left: calc(50% - (var(--border-thin) / 2 ));
+                    width: var(--border-thin);
+
+                    // hidden by default
                     display: none;
+
+                    background-color: var(--clr-0);
+                }
+
+                &.inactive {
+                    opacity: 0;
+                    animation-duration: 0s;
+                }
+
+                &#clock--PM {
+                    background: conic-gradient(
+                        var(--clr-pm-shadow) 0deg,
+                        var(--clr-pm-700) 45deg,
+                        var(--clr-pm-700) 315deg,
+                        var(--clr-pm-highlight) 360deg
+                    );
+
+                    &::before {
+                        background-color: var(--clr-pm-700);
+                    }
+                }
+
+                &#clock--AM {
+                    background: conic-gradient(
+                        var(--clr-am-shadow) 0deg,
+                        var(--clr-am-700) 45deg,
+                        var(--clr-am-700) 315deg,
+                        var(--clr-am-highlight) 360deg
+                    );
+
+                    &::before {
+                        background-color: var(--clr-am-700);
+                    }
                 }
             }
         }
@@ -283,7 +286,7 @@
                 height: var(--_size);
 
                 color: var(--clr-accent-800);
-                font-size: 1.8rem;
+                font-size: 1.6rem;
                 font-weight: 600;
 
                 background-color: var(--clr-100);
@@ -335,7 +338,7 @@
                     padding-bottom: 95%;
 
                     color: var(--clr-accent-800);
-                    font-size: 1.3rem;
+                    font-size: 1.15rem;
                     font-weight: 500;
                     text-align: center;
 
@@ -374,7 +377,7 @@
                     padding-bottom: calc(67.2% + (12.8% / var(--range) * var(--absValue)));
 
                     color: var(--clr-0);
-                    font-size: 1.4rem;
+                    font-size: 1.3rem;
                     font-weight: 600;
                     text-align: center;
 
@@ -420,23 +423,6 @@
     }
 
     /* === BREAKPOINTS ======================== */
-    :global(.pm) {
-        #dial {
-            .clock{
-                &#clock--PM {
-                    z-index: 0;
-                    opacity: 1;
-                    
-                }
-
-                &#clock--AM {
-                    z-index: -1;
-                    opacity: 0;
-                }
-            }
-        }
-    }
-
     @media (orientation: portrait) {
         #dial__container {
             height: unset;
@@ -445,14 +431,11 @@
 
             margin: 0 calc(-1 * var(--pad-hrz));
         }
-
-        #dial {
-            
-        }
     }
+
     @media only screen and (max-width: $breakpoint-smdesktop) {
         #dial {
-            .clock::before {
+            .clock__gradient::before {
                 --_size: 2.2%;
                 transform: translateY(-230%);
             }
@@ -461,12 +444,12 @@
                 #units {
                     --_size: 95px;
 
-                    font-size: 1.6rem;
+                    font-size: 1.5rem;
                 }
 
                 tbody tr {
                     td.hour {
-                        font-size: 1.2rem;
+                        font-size: 1.1rem;
 
                         &::before {
                             margin-bottom: 92.5%;
@@ -474,7 +457,7 @@
                     }
 
                     td.data {
-                        font-size: 1.3rem;
+                        font-size: 1.2rem;
                     }
                 }
             }
@@ -483,7 +466,7 @@
 
     @media only screen and (max-width: $breakpoint-tablet) {
         #dial {
-            .clock::before {
+            .clock__gradient::before {
                 --_size: 2.6%;
                 transform: translateY(-200%);
             }
@@ -510,7 +493,7 @@
 
     @media only screen and (max-width: $breakpoint-mobile) {
         #dial {
-            .clock::before {
+            .clock__gradient::before {
                 --_size: 3%;
                 transform: translateY(-190%);
             }
