@@ -2,6 +2,7 @@ import { browser } from '$app/environment';
 import { writable } from 'svelte/store';
 
 /* === STORES ============================= */
+// date & time
 export const date = writable(new Date());
 export const period = writable("AM");
 export const hours = writable(12);
@@ -12,20 +13,28 @@ export const hasSelectedDate = writable(false);
 export const selectedDate = writable(0);
 export const month = writable("Jan");
 export const day =  writable(1);
+// user preferences
 export const units = writable("met");
 export const tempType = writable("actual");
+export const hasSelectedTheme = writable(false);
+export const selectedTheme = writable("light")
 
 /* === INTERNAL VARIABLES ================= */
 let _hasSelectedPeriod = false;
 let _hasSelectedDate = false;
+let _hasSelectedTheme = false;
 
 updateDate(); // update all date stores immedietly
 
 /* === LOCAL STORAGE ====================== */
 if (browser) {
+    if (localStorage.theme) {
+        hasSelectedTheme.set(true);
+        selectedTheme.set(localStorage.theme);
+    }
     if (localStorage.units) units.set(localStorage.units);
     if (localStorage.tempType) tempType.set(localStorage.tempType);
-}
+};
 
 /* === UPDATES ============================ */
 function updateDate() {
@@ -45,7 +54,7 @@ function updateDate() {
     // set month and day
     month.set(_date.toLocaleString("en-US", { timeZone: "America/New_York", month: 'short' }));
     day.set(_date.toLocaleString("en-US", { timeZone: "America/New_York", day: 'numeric' }));
-}
+};
 
 const dateInterval = setInterval(() => {
     // update data every second
@@ -60,7 +69,20 @@ hasSelectedPeriod.subscribe((value) => {
 hasSelectedDate.subscribe((value) => {
     // update internal variable
     _hasSelectedDate = value;
-})
+});
+
+hasSelectedTheme.subscribe((value)=> {
+    // updated internal variable
+    _hasSelectedTheme = value;
+});
+
+selectedTheme.subscribe((value) => {
+    // prevent code from running on server
+    if (!browser) return
+
+    // set localStorage if theme was selected by user
+    if (_hasSelectedTheme) localStorage.theme = value;
+});
 
 units.subscribe((value) => {
     // prevent code from running on server

@@ -2,7 +2,7 @@
     /* === IMPORTS ============================ */
     import Nav from "../lib/nav.svelte";
     import { fade } from 'svelte/transition';
-    import { selectedPeriod, units } from '../store/store.js';
+    import { selectedPeriod, hasSelectedTheme, selectedTheme, units } from '../store/store.js';
 
     /* === PROP =============================== */
     export let data;
@@ -14,6 +14,8 @@
 <div 
     id="root"
     class:pm={$selectedPeriod === "PM"}
+    class:light={$hasSelectedTheme && $selectedTheme === "light"}
+    class:dark={$hasSelectedTheme && $selectedTheme === "dark"}
     class:imp={$units === "imp"}>
     <Nav />
 
