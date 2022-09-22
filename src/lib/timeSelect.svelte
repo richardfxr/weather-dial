@@ -191,4 +191,12 @@
             }
         }
     }
+
+    /* === BREAKPOINTS ======================== */
+    @media (orientation: portrait) {
+        .timeSelect h2 {
+            text-align: center;
+            padding-left: 0;
+        }
+    }
 </style>
