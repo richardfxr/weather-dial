@@ -35,12 +35,15 @@ $breakpoint-mobile: 650px;
     --nav-margin-2: 8px;
     --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
 
-    --fontSize-h1: 2rem;
+    --fontSize-h1: 1.8rem;
     --fontSize-lg: 1.3rem;
-    --fontSize-md: 1.25rem;
+    --fontSize-md: 1.1rem;
+    --fontSize-sm: 0.9rem;
 
     --trans-time-normal: 0.3s;
     --trans-normal: var(--trans-time-normal) ease;
+    --trans-time-fast: 0.2s;
+    --trans-fast: var(--trans-time-fast) ease;
 
     /* === COLORS ============================= */
 
@@ -97,7 +100,8 @@ $breakpoint-mobile: 650px;
 
         --fontSize-h1: 1.7rem;
         --fontSize-lg: 1.25rem;
-        --fontSize-md: 1.1rem;
+        --fontSize-md: 1.05rem;
+        --fontSize-sm: 0.85rem;
     }
 }
 
@@ -123,7 +127,8 @@ $breakpoint-mobile: 650px;
 
         --fontSize-h1: 1.6rem;
         --fontSize-lg: 1.2rem;
-        --fontSize-md: 1.05rem;
+        --fontSize-md: 1rem;
+        --fontSize-sm: 0.8rem;
     }
 }
 
