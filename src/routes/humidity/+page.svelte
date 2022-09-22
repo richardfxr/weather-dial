@@ -1,8 +1,8 @@
 <script>
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
-    import Radios from "$lib/radios.svelte";
-    import { period, hours, hasSelectedPeriod, selectedPeriod } from '../../store/store.js';
+    import TimeSelect from "$lib/timeSelect.svelte";
+    import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate } from '../../store/store.js';
 
     /* === HANDLERS =========================== */
     function handlePeriod(event) {
@@ -28,8 +28,8 @@
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curHumidityAm = HumidityAm[0];
-    $: curHumidityPm = HumidityPm[0];
+    $: curHumidityAm = HumidityAm[$selectedDate];
+    $: curHumidityPm = HumidityPm[$selectedDate];
     $: curHumidity = $period === "AM" ? curHumidityAm : curHumidityPm;
     $: selectedHumidity = $selectedPeriod === "AM" ? curHumidityAm : curHumidityPm;
 </script>
@@ -46,15 +46,7 @@
     <div id='text__col'>
         <h1>Humidity: {curHumidity[$hours]}{curUnits}</h1>
 
-        <Radios
-            groupName="Period"
-            bind:selected={$selectedPeriod}
-            options={[
-                { name: "AM", value: "AM"},
-                { name: "PM", value: "PM"},
-            ]}
-            index=0
-            on:select={handlePeriod} />
+        <TimeSelect />
     </div>
 </div>
 

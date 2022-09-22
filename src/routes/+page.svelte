@@ -1,15 +1,18 @@
 <script>
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
+    import TimeSelect from "../lib/timeSelect.svelte";
     import Radios from "$lib/radios.svelte";
-    import { period, hours, hasSelectedPeriod, selectedPeriod, units, tempType } from '../store/store.js';
+    import {
+        period,
+        hours,
+        selectedPeriod,
+        selectedDate,
+        units,
+        tempType,
+    } from '../store/store.js';
 
     /* === HANDLERS =========================== */
-    function handlePeriod(event) {
-        hasSelectedPeriod.set(true);
-        selectedPeriod.set(event.detail.value);
-    }
-
     function handleUnits(event) {
         units.set(event.detail.value);
     }
@@ -77,11 +80,11 @@
 
     /* === REACTIVE DECLARATIONS ============== */
     $: curTempAm = $units === "met" ?
-        $tempType === "actual" ? TempAmC[0] : TempFlAmC[0] :
-        $tempType === "actual" ? TempAmF[0] : TempFlAmF[0];
+        $tempType === "actual" ? TempAmC[$selectedDate] : TempFlAmC[$selectedDate] :
+        $tempType === "actual" ? TempAmF[$selectedDate] : TempFlAmF[$selectedDate];
     $: curTempPm = $units === "met" ?
-        $tempType === "actual" ? TempPmC[0] : TempFlPmC[0] :
-        $tempType === "actual" ? TempPmF[0] : TempFlPmF[0];
+        $tempType === "actual" ? TempPmC[$selectedDate] : TempFlPmC[$selectedDate] :
+        $tempType === "actual" ? TempPmF[$selectedDate] : TempFlPmF[$selectedDate];
     $: curTemp = $period === "AM" ? curTempAm : curTempPm;
     $: selectedTemp = $selectedPeriod === "AM" ? curTempAm : curTempPm;
     $: curUnits = $units === "met" ? "°C" : "°F";
@@ -99,15 +102,7 @@
     <div id='text__col'>
         <h1>Temperature: {curTemp[$hours]}{curUnits}</h1>
 
-        <Radios
-            groupName="Period"
-            bind:selected={$selectedPeriod}
-            options={[
-                { name: "AM", value: "AM"},
-                { name: "PM", value: "PM"},
-            ]}
-            index=0
-            on:select={handlePeriod} />
+        <TimeSelect />
 
         <Radios
             groupName="Units"

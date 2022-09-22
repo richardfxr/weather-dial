@@ -1,8 +1,9 @@
 <script>
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
+    import TimeSelect from "$lib/timeSelect.svelte";
     import Radios from "$lib/radios.svelte";
-    import { period, hours, hasSelectedPeriod, selectedPeriod, units } from '../../store/store.js';
+    import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate, units } from '../../store/store.js';
 
     /* === HANDLERS =========================== */
     function handlePeriod(event) {
@@ -44,8 +45,8 @@
     ];
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curWindAm = $units === "met" ? WindAmKm[0] : WindAmM[0];
-    $: curWindPm = $units === "met" ? WindPmKm[0] : WindPmM[0];
+    $: curWindAm = $units === "met" ? WindAmKm[$selectedDate] : WindAmM[$selectedDate];
+    $: curWindPm = $units === "met" ? WindPmKm[$selectedDate] : WindPmM[$selectedDate];
     $: curWind = $period === "AM" ? curWindAm : curWindPm;
     $: selectedWind = $selectedPeriod === "AM" ? curWindAm : curWindPm;
     $: curUnits = $units === "met" ? "km/h" : "mph";
@@ -63,15 +64,7 @@
     <div id='text__col'>
         <h1>Wind Speed: {curWind[$hours]}{curUnits}</h1>
 
-        <Radios
-            groupName="Period"
-            bind:selected={$selectedPeriod}
-            options={[
-                { name: "AM", value: "AM"},
-                { name: "PM", value: "PM"},
-            ]}
-            index=0
-            on:select={handlePeriod} />
+        <TimeSelect />
 
         <Radios
             groupName="Units"
