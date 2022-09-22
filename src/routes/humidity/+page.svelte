@@ -4,12 +4,6 @@
     import TimeSelect from "$lib/timeSelect.svelte";
     import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate } from '../../store/store.js';
 
-    /* === HANDLERS =========================== */
-    function handlePeriod(event) {
-        hasSelectedPeriod.set(true);
-        selectedPeriod.set(event.detail.value);
-    }
-
     /* === TEST DATA ========================== */
     const HumidityAm = [
         [66, 67, 70, 73, 74, 75, 77, 78, 69, 62, 54, 48],
@@ -28,10 +22,12 @@
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curHumidityAm = HumidityAm[$selectedDate];
-    $: curHumidityPm = HumidityPm[$selectedDate];
+    $: curHumidityAm = HumidityAm[0];
+    $: curHumidityPm = HumidityPm[0];
     $: curHumidity = $period === "AM" ? curHumidityAm : curHumidityPm;
-    $: selectedHumidity = $selectedPeriod === "AM" ? curHumidityAm : curHumidityPm;
+    $: selectedHumidityAm = HumidityAm[$selectedDate];
+    $: selectedHumidityPm = HumidityPm[$selectedDate];
+    $: selectedHumidity = $selectedPeriod === "AM" ? selectedHumidityAm : selectedHumidityPm;
 </script>
 
 <div class="twoCol">

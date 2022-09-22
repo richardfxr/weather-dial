@@ -28,10 +28,12 @@
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curPerAm = PerAm[$selectedDate];
-    $: curPerPm = PerPm[$selectedDate];
+    $: curPerAm = PerAm[0];
+    $: curPerPm = PerPm[0];
     $: curPer = $period === "AM" ? curPerAm : curPerPm;
-    $: selectedPer = $selectedPeriod === "AM" ? curPerAm : curPerPm;
+    $: selectedPerAm = PerAm[$selectedDate];
+    $: selectedPerPm = PerPm[$selectedDate];
+    $: selectedPer = $selectedPeriod === "AM" ? selectedPerAm : selectedPerPm;
 </script>
 
 <div class="twoCol">

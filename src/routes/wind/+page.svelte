@@ -45,10 +45,12 @@
     ];
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curWindAm = $units === "met" ? WindAmKm[$selectedDate] : WindAmM[$selectedDate];
-    $: curWindPm = $units === "met" ? WindPmKm[$selectedDate] : WindPmM[$selectedDate];
+    $: curWindAm = $units === "met" ? WindAmKm[0] : WindAmM[0];
+    $: curWindPm = $units === "met" ? WindPmKm[0] : WindPmM[0];
     $: curWind = $period === "AM" ? curWindAm : curWindPm;
-    $: selectedWind = $selectedPeriod === "AM" ? curWindAm : curWindPm;
+    $: selectedWindAm = $units === "met" ? WindAmKm[$selectedDate] : WindAmM[$selectedDate];
+    $: selectedWindPm = $units === "met" ? WindPmKm[$selectedDate] : WindPmM[$selectedDate];
+    $: selectedWind = $selectedPeriod === "AM" ? selectedWindAm : selectedWindPm;
     $: curUnits = $units === "met" ? "km/h" : "mph";
 </script>
 

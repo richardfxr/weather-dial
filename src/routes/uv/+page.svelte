@@ -28,10 +28,12 @@
     const curUnits = "/10";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curUvAm = UvAm[$selectedDate];
-    $: curUvPm = UvPm[$selectedDate];
+    $: curUvAm = UvAm[0];
+    $: curUvPm = UvPm[0];
     $: curUv = $period === "AM" ? curUvAm : curUvPm;
-    $: selectedUv = $selectedPeriod === "AM" ? curUvAm : curUvPm;
+    $: selectedUvAm = UvAm[$selectedDate];
+    $: selectedUvPm = UvPm[$selectedDate];
+    $: selectedUv = $selectedPeriod === "AM" ? selectedUvAm : selectedUvPm;
 </script>
 
 <div class="twoCol">

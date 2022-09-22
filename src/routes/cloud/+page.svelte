@@ -4,12 +4,6 @@
     import TimeSelect from "$lib/timeSelect.svelte";
     import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate } from '../../store/store.js';
 
-    /* === HANDLERS =========================== */
-    function handlePeriod(event) {
-        hasSelectedPeriod.set(true);
-        selectedPeriod.set(event.detail.value);
-    }
-
     /* === TEST DATA ========================== */
     const CloudAm = [
         [15, 11, 10, 9, 19, 22, 17, 21, 25, 15, 17, 19],
@@ -28,10 +22,12 @@
     const curUnits = "%";
 
     /* === REACTIVE DECLARATIONS ============== */
-    $: curCloudAm = CloudAm[$selectedDate];
-    $: curCloudPm = CloudPm[$selectedDate];
+    $: curCloudAm = CloudAm[0];
+    $: curCloudPm = CloudPm[0];
     $: curCloud = $period === "AM" ? curCloudAm : curCloudPm;
-    $: selectedCloud = $selectedPeriod === "AM" ? curCloudAm : curCloudPm;
+    $: selectedCloudAm = CloudAm[$selectedDate];
+    $: selectedCloudPm = CloudPm[$selectedDate];
+    $: selectedCloud = $selectedPeriod === "AM" ? selectedCloudAm : selectedCloudPm;
 </script>
 
 <div class="twoCol">

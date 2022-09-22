@@ -80,13 +80,19 @@
 
     /* === REACTIVE DECLARATIONS ============== */
     $: curTempAm = $units === "met" ?
+        $tempType === "actual" ? TempAmC[0] : TempFlAmC[0] :
+        $tempType === "actual" ? TempAmF[0] : TempFlAmF[0];
+    $: curTempPm = $units === "met" ?
+        $tempType === "actual" ? TempPmC[0] : TempFlPmC[0] :
+        $tempType === "actual" ? TempPmF[0] : TempFlPmF[0];
+    $: curTemp = $period === "AM" ? curTempAm : curTempPm;
+    $: selectedTempAm = $units === "met" ?
         $tempType === "actual" ? TempAmC[$selectedDate] : TempFlAmC[$selectedDate] :
         $tempType === "actual" ? TempAmF[$selectedDate] : TempFlAmF[$selectedDate];
-    $: curTempPm = $units === "met" ?
+    $: selectedTempPm = $units === "met" ?
         $tempType === "actual" ? TempPmC[$selectedDate] : TempFlPmC[$selectedDate] :
         $tempType === "actual" ? TempPmF[$selectedDate] : TempFlPmF[$selectedDate];
-    $: curTemp = $period === "AM" ? curTempAm : curTempPm;
-    $: selectedTemp = $selectedPeriod === "AM" ? curTempAm : curTempPm;
+    $: selectedTemp = $selectedPeriod === "AM" ? selectedTempAm : selectedTempPm;
     $: curUnits = $units === "met" ? "°C" : "°F";
 </script>
 
