@@ -7,6 +7,7 @@
     export let selected;
     export let options;
     export let index;
+    export let hideLabel = false;
 
     /* === VARIABLES ========================== */
     // let selected = initial;
@@ -21,7 +22,11 @@
     role="radiogroup"
     aria-labelledby="{groupName}__label"
     style="--index: {index};">
-    <h2 id="{groupName}__label">{groupName}</h2>
+    <h2
+        id="{groupName}__label"
+        class:visuallyHidden={hideLabel}>
+        {groupName}
+    </h2>
     <div class="scroll__container">
         <div class="radios">
             {#each options as {name, value}}
@@ -54,7 +59,7 @@
 
             padding-left: 5px;
 
-            animation: firstFade calc(0.8s + 0.2s * var(--index)) ease 1;
+            animation: delayedFade calc(1.2s + 0.2s * var(--index)) ease 1;
         }
     }
 
@@ -71,7 +76,7 @@
         border: solid var(--border-thin) var(--clr-0);
         border-radius: var(--bradius-circle);
 
-        animation: firstFade calc(0.9s + 0.2s * var(--index)) ease 1;
+        animation: delayedFade calc(1.3s + 0.2s * var(--index)) ease 1;
 
         label {
             --_input-pad-vertical: 6px;
@@ -86,7 +91,7 @@
 
                 color: var(--clr-900);
                 font-size: var(--fontSize-lg);
-                font-weight: 700;
+                font-weight: 600;
 
                 padding:
                     var(--_input-pad-vertical)
@@ -167,12 +172,5 @@
         .radios {
             justify-content: center;
         }
-    }
-
-    /* === ANIMATIONS ========================= */
-    @keyframes firstFade {
-        from { opacity: 0; }
-        50% { opacity: 0; }
-        to { opacity: 1; }
     }
 </style>
