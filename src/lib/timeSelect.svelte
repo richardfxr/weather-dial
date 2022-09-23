@@ -35,8 +35,8 @@
     $: day3 = date3.toLocaleString("en-US", { timeZone: "America/New_York", day: 'numeric' });
 
     $: date4 = new Date(new Date().setDate($date.getDate() + 4));
-    $: month4 = date1.toLocaleString("en-US", { timeZone: "America/New_York", month: 'short' });
-    $: day4 = date1.toLocaleString("en-US", { timeZone: "America/New_York", day: 'numeric' });
+    $: month4 = date4.toLocaleString("en-US", { timeZone: "America/New_York", month: 'short' });
+    $: day4 = date4.toLocaleString("en-US", { timeZone: "America/New_York", day: 'numeric' });
 </script>
 
 <div class="timeSelect">
@@ -105,6 +105,18 @@
                 <div class="date">
                     <span class="month">{month3}</span>
                     <span class="day">{convertToTwoDigits(day3)}</span>
+                </div>
+            </label>
+            <label>
+                <input
+                    class="visuallyHidden"
+                    type="radio"
+                    bind:group={$selectedDate}
+                    name="Date"
+                    value={4} />
+                <div class="date">
+                    <span class="month">{month4}</span>
+                    <span class="day">{convertToTwoDigits(day4)}</span>
                 </div>
             </label>
         </div>
@@ -197,6 +209,10 @@
         .timeSelect h2 {
             text-align: center;
             padding-left: 0;
+        }
+
+        .dateSelect {
+            justify-content: center;
         }
     }
 </style>
