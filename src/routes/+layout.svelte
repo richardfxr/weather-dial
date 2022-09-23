@@ -33,7 +33,7 @@
     .pageTransition__wrapper {
         // wrapper grid to prevent scrollbar from appearing during page transitions
         display: grid;
-        grid-template: 1fr 1fr;
+        grid-template: 1fr / 1fr;
     }
 
     #main {
