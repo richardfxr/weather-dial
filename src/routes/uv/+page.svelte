@@ -2,6 +2,7 @@
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
     import TimeSelect from "$lib/timeSelect.svelte";
+    import Footer from "$lib/footer.svelte";
     import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate } from '../../store/store.js';
 
     /* === HANDLERS =========================== */
@@ -49,6 +50,8 @@
         <h1>UV Index: {curUv[$hours]} of 10</h1>
 
         <TimeSelect />
+
+        <Footer index={0} />
     </div>
 </div>
 

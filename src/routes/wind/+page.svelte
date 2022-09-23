@@ -3,6 +3,7 @@
     import Dial from "$lib/dial.svelte";
     import TimeSelect from "$lib/timeSelect.svelte";
     import Radios from "$lib/radios.svelte";
+    import Footer from "$lib/footer.svelte";
     import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate, units } from '../../store/store.js';
 
     /* === HANDLERS =========================== */
@@ -75,8 +76,10 @@
                 { name: "km/h", value: "met"},
                 { name: "mph", value: "imp"},
             ]}
-            index=1
+            index={1}
             on:select={handleUnits} />
+
+            <Footer index={2} />
     </div>
 </div>
 

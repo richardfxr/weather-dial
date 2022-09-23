@@ -3,6 +3,7 @@
     import Dial from "$lib/dial.svelte";
     import TimeSelect from "../lib/timeSelect.svelte";
     import Radios from "$lib/radios.svelte";
+    import Footer from "$lib/footer.svelte";
     import {
         period,
         hours,
@@ -117,18 +118,20 @@
                 { name: "°C", value: "met"},
                 { name: "°F", value: "imp"},
             ]}
-            index=1
+            index={1}
             on:select={handleUnits} />
 
         <Radios
             groupName="Temperature Type"
-            bind:selected = {$tempType}
+            bind:selected={$tempType}
             options={[
                 { name: "Actual", value: "actual"},
                 { name: "Feels Like", value: "feelsLike"},
             ]}
-            index=2
+            index={2}
             on:select={handleTempType} />
+
+        <Footer index={3} />
     </div>
 </div>
 

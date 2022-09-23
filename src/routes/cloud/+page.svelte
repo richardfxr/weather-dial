@@ -2,6 +2,7 @@
     /* === IMPORTS ============================ */
     import Dial from "$lib/dial.svelte";
     import TimeSelect from "$lib/timeSelect.svelte";
+    import Footer from "$lib/footer.svelte";
     import { period, hours, hasSelectedPeriod, selectedPeriod, selectedDate } from '../../store/store.js';
 
     /* === TEST DATA ========================== */
@@ -43,6 +44,8 @@
         <h1>Cloud Cover: {curCloud[$hours]}{curUnits}</h1>
 
         <TimeSelect />
+
+        <Footer index={0} />
     </div>
 </div>
 
