@@ -150,11 +150,11 @@
 
     .accent {
         .radios label input:checked ~ span {
-            color: var(--clr-0);
+            color: var(--clr-white);
             background-color: var(--clr-accent-700);
 
             &::before {
-                background-color: var(--clr-0);
+                background-color: var(--clr-white);
             }
         }
     }

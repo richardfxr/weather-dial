@@ -72,21 +72,24 @@ hasSelectedDate.subscribe((value) => {
 });
 
 hasSelectedTheme.subscribe((value)=> {
+    console.log("updated hasSelectedTheme:", value);
     // updated internal variable
     _hasSelectedTheme = value;
 });
 
 selectedTheme.subscribe((value) => {
-    // prevent code from running on server
-    if (!browser) return
+    console.log("selectedTheme:", value);
+    // console.log("hasSelectedTheme:", _hasSelectedTheme);
+    // prevent code from running on server or if theme was selected by user
+    if (!browser || !_hasSelectedTheme) return;
 
-    // set localStorage if theme was selected by user
-    if (_hasSelectedTheme) localStorage.theme = value;
+    document.documentElement.setAttribute('data-theme', value);
+    localStorage.theme = value;
 });
 
 units.subscribe((value) => {
     // prevent code from running on server
-    if (!browser) return
+    if (!browser) return;
 
     // set localStorage
     localStorage.units = value;
@@ -94,8 +97,24 @@ units.subscribe((value) => {
 
 tempType.subscribe((value) => {
     // prevent code from running on server
-    if (!browser) return
+    if (!browser) return;
 
     // set localStorage
     localStorage.tempType = value;
 });
+
+/* === CLIENT SIDE INITIALIZATION ========= */
+if (browser) {
+    // initial theme
+    if (window.matchMedia("(prefers-color-scheme: dark)") && !_hasSelectedTheme) {
+        selectedTheme.set("dark");
+    }
+
+    // event listeners
+    window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
+        if (!_hasSelectedTheme) {
+            // set appropriate selectedTheme if user has not manually selected theme
+            e.matches ? selectedTheme.set("dark") : selectedTheme.set("light");
+        }
+    });
+};

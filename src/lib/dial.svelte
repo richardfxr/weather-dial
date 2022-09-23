@@ -173,8 +173,8 @@
             bottom: calc(var(--pad-dial) + var(--_pad));
             left: calc(var(--pad-dial) + var(--_pad));
 
-            background-color: var(--clr-accent-700);
-            border: solid var(--border-thin) var(--clr-0);
+            background-color: var(--clr-accent-main);
+            border: solid var(--border-thin) var(--clr-clockBorder);
             border-radius: var(--bradius-circle);
 
             transform: rotate(var(--timeRotation));
@@ -191,7 +191,7 @@
                 bottom: calc(var(--pad-dial) + var(--_pad));
                 left: calc(var(--pad-dial) + var(--_pad));
 
-                border: solid var(--border-thin) var(--clr-0);
+                border: solid var(--border-thin) var(--clr-clockBorder);
                 border-radius: var(--bradius-circle);
 
                 transform: rotate(var(--timeRotation));
@@ -237,26 +237,26 @@
                 &#clock--PM {
                     background: conic-gradient(
                         var(--clr-pm-shadow) 0deg,
-                        var(--clr-pm-700) 45deg,
-                        var(--clr-pm-700) 315deg,
+                        var(--clr-pm-main) 45deg,
+                        var(--clr-pm-main) 315deg,
                         var(--clr-pm-highlight) 360deg
                     );
 
                     &::before {
-                        background-color: var(--clr-pm-700);
+                        background-color: var(--clr-pm-800);
                     }
                 }
 
                 &#clock--AM {
                     background: conic-gradient(
                         var(--clr-am-shadow) 0deg,
-                        var(--clr-am-700) 45deg,
-                        var(--clr-am-700) 315deg,
+                        var(--clr-am-main) 45deg,
+                        var(--clr-am-main) 315deg,
                         var(--clr-am-highlight) 360deg
                     );
 
                     &::before {
-                        background-color: var(--clr-am-700);
+                        background-color: var(--clr-am-800);
                     }
                 }
             }
@@ -290,7 +290,7 @@
                 font-weight: 600;
 
                 background-color: var(--clr-100);
-                border: solid var(--border-thin) var(--clr-0);
+                border: solid var(--border-thin) var(--clr-clockBorder);
                 border-radius: var(--bradius-circle);
 
                 transition: color var(--trans-normal);
@@ -376,7 +376,7 @@
 
                     padding-bottom: calc(67.2% + (12.8% / var(--range) * var(--absValue)));
 
-                    color: var(--clr-0);
+                    color: var(--clr-white);
                     font-size: 1.3rem;
                     font-weight: 600;
                     text-align: center;
@@ -408,7 +408,7 @@
                         background-size: cover;
                         background-repeat: no-repeat;
                         background-position: center center;
-                        border: solid var(--border-thin) var(--clr-0);
+                        border: solid var(--border-thin) var(--clr-white);
                         border-radius: var(--bradius-circle);
 
                         clip-path: polygon(50% 50%, 36.60254% 0, 63.39746% 0);

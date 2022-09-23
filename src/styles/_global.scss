@@ -36,6 +36,7 @@ GLOBAL
 
 /* typography */
 h1 {
+    color: var(--clr-900);
     font-size: var(--fontSize-h1);
 
     animation: h1Fade 0.7s ease 1;

@@ -57,6 +57,7 @@ $breakpoint-mobile: 650px;
     --clr-accent-800: var(--clr-am-800);
     --clr-accent-700: var(--clr-am-700);
     --clr-accent-highlight: var(--clr-am-highlight);
+    --clr-accent-main: var(--clr-am-main);
     --clr-accent-shadow: var(--clr-am-shadow);
     --clr-accent-separator: var(--clr-am-separator);
 }
@@ -66,6 +67,7 @@ $breakpoint-mobile: 650px;
     --clr-accent-800: var(--clr-pm-800);
     --clr-accent-700: var(--clr-pm-700);
     --clr-accent-highlight: var(--clr-pm-highlight);
+    --clr-accent-main: var(--clr-pm-main);
     --clr-accent-shadow: var(--clr-pm-shadow);
     --clr-accent-separator: var(--clr-pm-separator);
 }
@@ -75,6 +77,32 @@ $breakpoint-mobile: 650px;
 /* ========================================
     BREAKPOINTS
     ======================================== */
+@media (prefers-color-scheme: dark) {
+    :root {
+        /* dark theme */
+        // parse $dark into CSS variables
+        @each $name, $value in $dark {
+            --clr-#{$name}: #{$value};
+        }
+    }
+}
+
+:global([data-theme="light"]) {
+    /* light theme */
+    // parse $light into CSS variables
+    @each $name, $value in $light {
+        --clr-#{$name}: #{$value};
+    }
+}
+
+:global([data-theme="dark"]) {
+    /* dark theme */
+    // parse $dark into CSS variables
+    @each $name, $value in $dark {
+        --clr-#{$name}: #{$value};
+    }
+}
+
 @media (orientation: portrait) {
     :root {
         --maxWidth: 860px;

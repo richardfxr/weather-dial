@@ -18,12 +18,46 @@ $light: (
     am-800: #D4401C,
     am-700: #E55B39,
     am-highlight: #FFA55C,
+    am-main: #E55B39,
     am-shadow: #C4154B,
     am-separator: rgba(255, 167, 143, 50%),
 
     pm-800: #3645E7,
     pm-700: #3F4CE8,
     pm-highlight: #54ACFF,
+    pm-main: #3F4CE8,
     pm-shadow: #411CC7,
     pm-separator: rgba(117, 129, 255, 50%),
-)
+
+    clockBorder: #FFFFFF,
+    "white": #FFFFFF,
+);
+
+// === DARK THEME =========================
+$dark: (
+    1000: #FFFFFF,
+    900: #F7F7F7,
+    700: #B3B3B3,
+    100: #000000,
+    100trans: rgba(0, 0, 0, 0%),
+    50: #F2E8DE,
+    20: #262626,
+    0: #333333,
+
+    am-800: #FF633D,
+    am-700: #B53F22,
+    am-highlight: #4D4D4D,
+    am-main: #1A1A1A,
+    am-shadow: #000000,
+    am-separator: rgba(102, 102, 102, 50%),
+
+    pm-800: #5C6AFF,
+    pm-700: #313CC2,
+    pm-highlight: #4D4D4D,
+    pm-main: #1A1A1A,
+    pm-shadow: #000000,
+    pm-separator: rgba(102, 102, 102, 50%),
+
+    clockBorder: #666666,
+    "white": #FFFFFF,
+);
