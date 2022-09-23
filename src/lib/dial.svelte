@@ -273,6 +273,8 @@
             #units {
                 // units circle in the center
                 --_size: 110px;
+                --_boxShadow-blur: 45px;
+                --_boxShadow-opacity: 0;
                 
                 display: flex;
                 align-items: center;
@@ -295,6 +297,23 @@
 
                 transition: color var(--trans-normal);
                 animation: unitsShrink 0.6s ease-out 1;
+
+                &::before {
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+
+                    border-radius: var(--bradius-circle);
+                    box-shadow: 0px 5px var(--_boxShadow-blur) 3px var(--clr-accent-700);
+
+                    opacity: var(--_boxShadow-opacity);
+                    transition: 
+                        opacity var(--trans-normal),
+                        box-shadow var(--trans-normal);
+                }
             }
 
             tbody tr {
@@ -423,6 +442,27 @@
     }
 
     /* === BREAKPOINTS ======================== */
+    @media (prefers-color-scheme: dark) {
+        #dial table #units {
+            --_boxShadow-opacity: 1;
+            border-color: var(--clr-accent-800);
+        }
+    }
+
+    :global([data-theme="light"]) {
+        #dial table #units {
+            --_boxShadow-opacity: 0;
+            border-color: var(--clr-white);
+        }
+    }
+
+    :global([data-theme="dark"]) {
+        #dial table #units {
+            --_boxShadow-opacity: 1;
+            border-color: var(--clr-accent-800);
+        }
+    }
+    
     @media (orientation: portrait) {
         #dial__container {
             height: unset;
