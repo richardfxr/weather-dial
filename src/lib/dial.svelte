@@ -10,7 +10,7 @@
     /* === REACTIVE DECLARATIONS ============== */
     $: largestData = Math.max(...dataPoints);
     $: smallestData = Math.min(...dataPoints);
-    $: range = largestData - smallestData;
+    $: range = largestData - smallestData === 0 ? 1 : largestData - smallestData;
 </script>
 
 <div id="dial__container">
