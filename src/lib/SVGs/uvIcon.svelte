@@ -27,7 +27,7 @@
     .active {
         @for $i from 1 through 10 {
             circle:nth-child(#{$i}) {
-                animation: circleFade-#{$i} 0.65    s ease-out 1;
+                animation: circleFade-#{$i} 0.65s ease-out 1;
             }
         }
     }
