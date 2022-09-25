@@ -46,6 +46,52 @@ h2 {
     font-size: var(--fontSize-lg);
 }
 
+/* icons */
+svg {
+    display: block;
+}
+
+.navIcon {
+    .clr {
+        &-main {
+            fill: var(--clr-navIcon-main);
+        }
+        
+        &-secondary {
+            fill: var(--clr-navIcon-secondary);
+        }
+
+        &-tertiary {
+            fill: var(--clr-navIcon-tertiary);
+        }
+
+        &-bg {
+            fill: var(--clr-100);
+            transition: unset;
+        }
+    }
+
+    &.active {
+        .clr {
+            &-main {
+                fill: var(--clr-navIcon-main-active);
+            }
+            
+            &-secondary {
+                fill: var(--clr-navIcon-secondary-active);
+            }
+
+            &-tertiary {
+                fill: var(--clr-navIcon-tertiary-active);
+            }
+        }
+    }
+
+    * {
+        transition: fill var(--trans-fast);
+    }
+}
+
 /* utility */
 .visuallyHidden {
     /* elements with this class will not be displayed visually but still be read by screen readers */
