@@ -31,9 +31,7 @@ $breakpoint-mobile: 650px;
     --twoCol-minWidth: 22em;
 
     --nav-a-size: 75px;
-    --nav-margin-1: 32px;
-    --nav-margin-2: 8px;
-    --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.5 * var(--pad-hrz));
+    --nav-size: calc(var(--nav-a-size) + 1.5 * var(--pad-hrz));
 
     --fontSize-h1: 1.8rem;
     --fontSize-lg: 1.3rem;
@@ -60,6 +58,14 @@ $breakpoint-mobile: 650px;
     --clr-accent-main: var(--clr-am-main);
     --clr-accent-shadow: var(--clr-am-shadow);
     --clr-accent-separator: var(--clr-am-separator);
+
+    // nav icon colors
+    --clr-navIcon-main: var(--clr-600);
+    --clr-navIcon-secondary: var(--clr-100);
+    --clr-navIcon-tertiary: var(--clr-700);
+    --clr-navIcon-main-active: var(--clr-accent-800);
+    --clr-navIcon-secondary-active: var(--clr-0);
+    --clr-navIcon-tertiary-active: var(--clr-1000);
 }
 
 :global(.pm) {
@@ -70,6 +76,9 @@ $breakpoint-mobile: 650px;
     --clr-accent-main: var(--clr-pm-main);
     --clr-accent-shadow: var(--clr-pm-shadow);
     --clr-accent-separator: var(--clr-pm-separator);
+
+    // nav icon colors
+    --clr-navIcon-main-active: var(--clr-accent-800);
 }
 
 
@@ -84,6 +93,10 @@ $breakpoint-mobile: 650px;
         @each $name, $value in $dark {
             --clr-#{$name}: #{$value};
         }
+
+        // nav icon colors
+        --clr-navIcon-secondary-active: var(--clr-100);
+        --clr-navIcon-tertiary-active: var(--clr-900);
     }
 }
 
@@ -93,6 +106,10 @@ $breakpoint-mobile: 650px;
     @each $name, $value in $light {
         --clr-#{$name}: #{$value};
     }
+
+    // nav icon colors
+    --clr-navIcon-secondary-active: var(--clr-0);
+    --clr-navIcon-tertiary-active: var(--clr-1000);
 }
 
 :global([data-theme="dark"]) {
@@ -101,6 +118,10 @@ $breakpoint-mobile: 650px;
     @each $name, $value in $dark {
         --clr-#{$name}: #{$value};
     }
+
+    // nav icon colors
+    --clr-navIcon-secondary-active: var(--clr-100);
+    --clr-navIcon-tertiary-active: var(--clr-900);
 }
 
 @media (orientation: portrait) {
@@ -149,9 +170,7 @@ $breakpoint-mobile: 650px;
         --twoCol-minWidth: 18em;
 
         --nav-a-size: 65px;
-        --nav-margin-1: 24px;
-        --nav-margin-2: 6px;
-        --nav-size: calc(var(--nav-a-size) + var(--nav-margin-1) + 1.25 * var(--pad-hrz));
+        --nav-size: calc(var(--nav-a-size) + 1.25 * var(--pad-hrz));
 
         --fontSize-h1: 1.6rem;
         --fontSize-lg: 1.2rem;

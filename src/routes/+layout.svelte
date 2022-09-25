@@ -61,7 +61,7 @@
             width: var(--_portrait-width);
             max-width: calc(var(--maxWidth) * var(--_portrait-width));
 
-            padding: var(--pad-lg) var(--pad-hrz) 0 var(--pad-hrz);
+            padding: var(--pad-sm) var(--pad-hrz) 0 var(--pad-hrz);
             margin: 0 auto;
         }
     }
