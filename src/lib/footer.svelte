@@ -19,8 +19,8 @@
         groupName="Theme"
         bind:selected={$selectedTheme}
         options={[
-            { name: "L", value: "light"},
-            { name: "D", value: "dark"},
+            { name: "Light theme", value: "light"},
+            { name: "Dark theme", value: "dark"},
         ]}
         {index}
         hideLabel={true}

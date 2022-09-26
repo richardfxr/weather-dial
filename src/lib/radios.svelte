@@ -1,6 +1,8 @@
 <script>
     /* === IMPROTS ============================ */
     import { createEventDispatcher } from 'svelte';
+    import SunIcon from '$lib/SVGs/sunIcon.svelte';
+    import MoonIcon from '$lib/SVGs/moonIcon.svelte';
 
     /* === PROPS ============================== */
     export let groupName;
@@ -19,6 +21,7 @@
 <div
     class="radios__container"
     class:accent={groupName === "Period"}
+    class:icon={groupName === "Theme"}
     role="radiogroup"
     aria-labelledby="{groupName}__label"
     style="--index: {index};">
@@ -38,7 +41,21 @@
                         on:click={()=> {dispatch('select', { value: selected })}}
                         name={groupName}
                         {value} />
-                    <span>{name}</span>
+                    {#if groupName === "Theme"}
+                        {#if value === "light"}
+                            <div>
+                                <span class="visuallyHidden">{name}</span>
+                                <SunIcon active={selected === value} />
+                            </div>
+                        {:else if value === "dark"}
+                            <div>
+                                <span class="visuallyHidden">{name}</span>
+                                <MoonIcon active={selected === value} />
+                            </div>
+                        {/if}
+                    {:else}
+                        <div>{name}</div>
+                    {/if}
                 </label>
             {/each}
         </div>
@@ -76,6 +93,7 @@
         border: solid var(--border-thin) var(--clr-0);
         border-radius: var(--bradius-circle);
 
+        transition: border-color var(--trans-normal);
         animation: delayedFade calc(1.3s + 0.2s * var(--index)) ease 1;
 
         label {
@@ -84,7 +102,7 @@
             --_inpit-pad-end: 20px;
             --_bradius-end: calc(var(--fontSize-lg) * 1.63 / 2 + var(--_input-pad-vertical));
 
-            span {
+            div {
                 display: block;
                 position: relative;
                 cursor: pointer;
@@ -117,7 +135,7 @@
                 }
             }
             
-            &:first-child span {
+            &:first-child div {
                 padding-left: var(--_inpit-pad-end);
                 border-radius: var(--_bradius-end) var(--bradius-sm) var(--bradius-sm) var(--_bradius-end);
 
@@ -127,7 +145,7 @@
                 }
             }
 
-            &:last-child span {
+            &:last-child div {
                 padding-right: var(--_inpit-pad-end);
                 border-radius: var(--bradius-sm) var(--_bradius-end) var(--_bradius-end) var(--bradius-sm);
 
@@ -138,7 +156,7 @@
             }
         }
 
-        input:checked ~ span {
+        input:checked ~ div {
             color: var(--clr-1000);
             background-color: var(--clr-20);
             
@@ -149,7 +167,7 @@
     }
 
     .accent {
-        .radios label input:checked ~ span {
+        .radios label input:checked ~ div {
             color: var(--clr-white);
             background-color: var(--clr-accent-700);
 
@@ -157,6 +175,30 @@
                 background-color: var(--clr-white);
             }
         }
+    }
+
+    .icon {
+        .radios label {
+            --_icon-size: 1.78rem;
+            --_input-pad-vertical: 8px;
+            --_inpit-pad-end: 19px;
+            --_bradius-end: calc(var(--_icon-size) / 2 + var(--_input-pad-vertical));
+
+            div {
+                // remove additional bottom padding
+                padding-bottom: var(--_input-pad-vertical);
+
+                &::before {
+                    display: none;
+                }
+
+                :global(.icon) {
+                    display: block;
+                    width: var(--_icon-size);
+                    height: var(--_icon-size);
+                }
+            }
+        } 
     }
 
     /* === BREAKPOINTS ======================== */

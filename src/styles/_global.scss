@@ -51,7 +51,7 @@ svg {
     display: block;
 }
 
-.navIcon {
+svg {
     .clr {
         &-main {
             fill: var(--clr-navIcon-main);
@@ -63,6 +63,10 @@ svg {
 
         &-tertiary {
             fill: var(--clr-navIcon-tertiary);
+        }
+
+        &-indicator {
+            fill: transparent;
         }
 
         &-bg {
@@ -83,6 +87,10 @@ svg {
 
             &-tertiary {
                 fill: var(--clr-navIcon-tertiary-active);
+            }
+
+            &-indicator {
+                fill: var(--clr-navIcon-main-active);
             }
         }
     }
