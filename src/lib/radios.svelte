@@ -179,8 +179,8 @@
 
     .icon {
         .radios label {
-            --_icon-size: 1.78rem;
-            --_input-pad-vertical: 8px;
+            --_icon-size: 1.5rem;
+            --_input-pad-vertical: 9px;
             --_inpit-pad-end: 19px;
             --_bradius-end: calc(var(--_icon-size) / 2 + var(--_input-pad-vertical));
 
