@@ -105,6 +105,10 @@
     $: curUnits = $units === "met" ? "°C" : "°F";
 </script>
 
+<svelte:head>
+    <title>Temperature | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial

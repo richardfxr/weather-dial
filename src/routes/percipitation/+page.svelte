@@ -39,6 +39,10 @@
     $: selectedPer = $selectedPeriod === "AM" ? selectedPerAm : selectedPerPm;
 </script>
 
+<svelte:head>
+    <title>Percipitation | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial

@@ -59,6 +59,10 @@
     $: curUnits = $units === "met" ? "km/h" : "mph";
 </script>
 
+<svelte:head>
+    <title>Wind Speed | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial

@@ -33,6 +33,10 @@
     $: selectedHumidity = $selectedPeriod === "AM" ? selectedHumidityAm : selectedHumidityPm;
 </script>
 
+<svelte:head>
+    <title>Humidity | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial

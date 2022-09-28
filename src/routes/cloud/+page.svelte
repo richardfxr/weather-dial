@@ -33,6 +33,10 @@
     $: selectedCloud = $selectedPeriod === "AM" ? selectedCloudAm : selectedCloudPm;
 </script>
 
+<svelte:head>
+    <title>Cloud Cover | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial

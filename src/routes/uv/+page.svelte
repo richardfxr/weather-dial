@@ -39,6 +39,10 @@
     $: selectedUv = $selectedPeriod === "AM" ? selectedUvAm : selectedUvPm;
 </script>
 
+<svelte:head>
+    <title>UV Index | Weather Dial</title>
+</svelte:head>
+
 <div class="twoCol">
     <div id="dial__col">
         <Dial
