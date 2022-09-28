@@ -18,7 +18,7 @@
 
     /* === FUNCTIONS ========================== */
     function convertToTwoDigits(num) {
-        return num.toLocaleString(undefined, { minimumIntegerDigits: 2 });
+        return String(num).padStart(2, '0');
     }
 
     /* === REACTIVE DECLARATIONS ============== */
