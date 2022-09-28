@@ -31,7 +31,7 @@ $breakpoint-mobile: 650px;
     --twoCol-minWidth: 22em;
 
     --nav-a-size: 75px;
-    --nav-size: calc(var(--nav-a-size) + 1.5 * var(--pad-hrz));
+    --nav-size: calc(var(--nav-a-size) + 2 * var(--pad-hrz));
 
     --fontSize-h1: 1.8rem;
     --fontSize-lg: 1.3rem;
@@ -170,7 +170,6 @@ $breakpoint-mobile: 650px;
         --twoCol-minWidth: 18em;
 
         --nav-a-size: 65px;
-        --nav-size: calc(var(--nav-a-size) + 1.25 * var(--pad-hrz));
 
         --fontSize-h1: 1.6rem;
         --fontSize-lg: 1.2rem;

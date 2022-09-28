@@ -96,7 +96,6 @@
 
 <style lang="scss">
     #nav {
-        --_pad-right: calc(var(--pad-hrz) / 2);
         --_icon-size: min(1.75rem, 45px);
 
         display: flex;
@@ -107,11 +106,7 @@
         z-index: 1000;
         width: var(--nav-size);
 
-        padding:
-            0
-            var(--_pad-right)
-            0
-            var(--pad-hrz);
+        padding: 0 var(--pad-hrz);
 
         overflow-x: hidden;
         overflow-y: auto;
@@ -172,11 +167,6 @@
                     padding: var(--pad-sm) var(--pad-xs);
                 }
             }
-        }
-    }
-    @media only screen and (max-width: $breakpoint-tablet) {
-        #nav {
-            --_pad-right: calc(var(--pad-hrz) / 4);
         }
     }
 </style>

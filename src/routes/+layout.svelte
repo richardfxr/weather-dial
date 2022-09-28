@@ -38,7 +38,6 @@
 
     #main {
         --_portrait-width: 50%; 
-        --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 2));
 
         // forces #main into wrapper grid to prevent scrollbar
         grid-row: 1;
@@ -50,7 +49,7 @@
             0
             var(--pad-hrz)
             0
-            var(--_pad-left);
+            var(--nav-size);
         margin: 0 auto;
     }
 
@@ -69,21 +68,18 @@
     @media only screen and (max-width: $breakpoint-smdesktop) {
         #main {
             --_portrait-width: 60%; 
-            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 3));
         }
     }
 
     @media only screen and (max-width: $breakpoint-tablet) {
         #main {
             --_portrait-width: 70%; 
-            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 4));
         }
     }
 
     @media only screen and (max-width: $breakpoint-mobile) {
         #main {
             --_portrait-width: 100%; 
-            --_pad-left: calc(var(--nav-size) + (var(--pad-hrz) / 5));
         }
     }
 </style>
