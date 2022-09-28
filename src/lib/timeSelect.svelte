@@ -141,19 +141,14 @@
         }
     }
 
-    .dateSelect {
-        display: flex;
-        flex-flow: row wrap;
-
-        animation: delayedFade 1.1s ease 1;
-    }
-
-    .dateSelect {
+    .dateSelect {        
         display: flex;
         flex-direction: row wrap;
         gap: var(--pad-xxs);
 
         padding-top: calc(var(--pad-xs) - var(--pad-xxs));
+
+        animation: delayedFade 1.1s ease 1;
 
         label {
             display: flex;
@@ -167,8 +162,9 @@
                 align-items: center;
                 justify-content: center;
                 gap: var(--pad-xxs);
+                width: calc(1.92rem + 34px);
 
-                padding: 22px 17px;
+                padding: 1.375rem 0;
                 border: solid var(--border-thin) var(--clr-0);
                 border-radius: var(--bradius-circle);
 

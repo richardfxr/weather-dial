@@ -288,7 +288,7 @@
                 height: var(--_size);
 
                 color: var(--clr-accent-800);
-                font-size: 1.6rem;
+                font-size: min(1.6rem, 40px);
                 font-weight: 600;
 
                 background-color: var(--clr-100);
@@ -484,7 +484,7 @@
                 #units {
                     --_size: 95px;
 
-                    font-size: 1.5rem;
+                    font-size: min(1.5rem, 35px);
                 }
 
                 tbody tr {
@@ -515,7 +515,7 @@
                 #units {
                     --_size: 75px;
 
-                    font-size: 1.3rem;
+                    font-size: min(1.3rem, 28px);
                 }
 
                 tbody tr {
