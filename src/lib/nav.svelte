@@ -134,6 +134,46 @@
 
                 transition: border-color var(--trans-fast);
 
+                :global {
+                    // navigation icon (SVG) styling
+                    .navIcon {
+                        .clr {
+                            &-main {
+                                fill: var(--clr-navIcon-main);
+                            }
+                            
+                            &-secondary {
+                                fill: var(--clr-navIcon-secondary);
+                            }
+
+                            &-tertiary {
+                                fill: var(--clr-navIcon-tertiary);
+                            }
+
+                            &-indicator {
+                                fill: transparent;
+                            }
+
+                            &-bg {
+                                fill: var(--clr-100);
+                                transition: unset;
+                            }
+                        }
+
+                        .stroke {
+                            fill: none;
+                            stroke: var(--clr-navIcon-tertiary);
+                            stroke-width: 2px;
+                            stroke-linecap: round;
+                            stroke-linejoin: round;
+
+                            stroke-dasharray: var(--length);
+
+                            transition: stroke var(--trans-fast);
+                        }                       
+                    }
+                }
+
                 &:hover, &:focus {
                     :global {
                         .navIcon {
@@ -168,20 +208,28 @@
                 &.active {
                     border-color: var(--clr-accent-800);
 
-                    :global(.navIcon .clr-main) {
-                        fill: var(--clr-navIcon-main-active);
-                    }
-
-                    &:hover, &:focus {
-                        :global {
-                            .navIcon .clr {
+                    :global {
+                        .navIcon {
+                            .clr {
                                 &-main {
                                     fill: var(--clr-navIcon-main-active);
+                                }
+                                
+                                &-secondary {
+                                    fill: var(--clr-navIcon-secondary-active);
                                 }
 
                                 &-tertiary {
                                     fill: var(--clr-navIcon-tertiary-active);
                                 }
+
+                                &-indicator {
+                                    fill: var(--clr-navIcon-main-active);
+                                }
+                            }
+                            
+                            .stroke {
+                                stroke: var(--clr-navIcon-tertiary-active);
                             }
                         }
                     }
@@ -241,30 +289,36 @@
             }
             
             &.active {
-                &:hover, &:focus {
-                    :global {
-                        .navIcon .clr {
+                &::before {
+                    opacity: 1;
+                }
+
+                :global {
+                    // specific styling for active .navIcon due to background circle
+                    .navIcon {
+                        .clr {
                             &-main {
                                 fill: var(--clr-100);
+                            }
+                            
+                            &-secondary {
+                                fill: var(--clr-20);
                             }
 
                             &-tertiary {
                                 fill: var(--clr-100);
                             }
-                        }
 
+                            &-bg {
+                                fill: var(--clr-20);
+                                transition: fill var(--trans-normal);
+                            }
+                        }
+                        
                         .stroke {
                             stroke: var(--clr-100);
                         }
                     }
-                }
-
-                &::before {
-                    opacity: 1;
-                }
-
-                :global(.navIcon .clr-main) {
-                    fill: var(--clr-100);
                 }
             }
         }

@@ -49,55 +49,10 @@ h2 {
 /* icons */
 svg {
     display: block;
-}
-
-svg {
-    .clr {
-        &-main {
-            fill: var(--clr-navIcon-main);
-        }
-        
-        &-secondary {
-            fill: var(--clr-navIcon-secondary);
-        }
-
-        &-tertiary {
-            fill: var(--clr-navIcon-tertiary);
-        }
-
-        &-indicator {
-            fill: transparent;
-        }
-
-        &-bg {
-            fill: var(--clr-100);
-            transition: unset;
-        }
-    }
-
-    &.active {
-        .clr {
-            &-main {
-                fill: var(--clr-navIcon-main-active);
-            }
-            
-            &-secondary {
-                fill: var(--clr-navIcon-secondary-active);
-            }
-
-            &-tertiary {
-                fill: var(--clr-navIcon-tertiary-active);
-            }
-
-            &-indicator {
-                fill: var(--clr-navIcon-main-active);
-            }
-        }
-    }
 
     * {
         transition: fill var(--trans-fast);
-    }
+    } 
 }
 
 /* utility */
@@ -166,37 +121,5 @@ svg {
     
     to {
         opacity: 1;
-    }
-}
-
-/* === A11Y =============================== */
-@media (prefers-contrast: more) {
-    svg {
-        .clr-bg {
-            transition: fill var(--trans-normal);
-        }
-        &.active {
-            .clr {
-                &-main {
-                    fill: var(--clr-100);
-                }
-
-                &-secondary {
-                    fill: var(--clr-20);
-                }
-
-                &-tertiary {
-                    fill: var(--clr-100);
-                }
-
-                &-indicator {
-                    fill: var(--clr-100);
-                }
-
-                &-bg {
-                    fill: var(--clr-20);
-                }
-            }
-        }
     }
 }

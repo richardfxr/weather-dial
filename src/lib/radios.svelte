@@ -21,7 +21,7 @@
 <div
     class="radios__container"
     class:accent={groupName === "Period"}
-    class:icon={groupName === "Theme"}
+    class:icons={groupName === "Theme"}
     role="radiogroup"
     aria-labelledby="{groupName}__label"
     style="--index: {index};">
@@ -192,8 +192,8 @@
         }
     }
 
-    .icon {
-        .radios label {
+    .icons .radios {
+        label {
             --_icon-size: 1.5rem;
             --_input-pad-vertical: 9px;
             --_inpit-pad-end: 19px;
@@ -207,13 +207,46 @@
                     display: none;
                 }
 
-                :global(.icon) {
-                    display: block;
-                    width: var(--_icon-size);
-                    height: var(--_icon-size);
+                :global {
+                    .icon {
+                        display: block;
+                        width: var(--_icon-size);
+                        height: var(--_icon-size);
+
+                        .clr {
+                            &-tertiary {
+                                fill: var(--clr-900);
+                            }
+
+                            &-indicator {
+                                fill: transparent;
+                            }
+                        }
+                    }
                 }
             }
-        } 
+
+            &:hover, &:focus div {
+                :global(.icon .clr-tertiary) {
+                    fill: var(--clr-1000);
+                }
+            }
+            
+        }
+
+        input:checked ~ div {
+            :global {
+                .icon .clr {
+                    &-tertiary {
+                        fill: var(--clr-navIcon-tertiary-active);
+                    }
+
+                    &-indicator {
+                        fill: var(--clr-navIcon-main-active);
+                    }
+                }
+            }
+        }
     }
 
     /* === BREAKPOINTS ======================== */
@@ -251,6 +284,22 @@
 
                 &::before {
                     background-color: var(--clr-100);
+                }
+            }
+        }
+
+        .icons .radios {
+            input:checked ~ div {
+                :global {
+                    .icon .clr {
+                        &-tertiary {
+                            fill: var(--clr-100);
+                        }
+
+                        &-indicator {
+                            fill: var(--clr-100);
+                        }
+                    }
                 }
             }
         }

@@ -19,21 +19,8 @@
 </svg>
 
 <style lang="scss">
-    .stroke {
-        fill: none;
-        stroke: var(--clr-navIcon-tertiary);
-        stroke-width: 2px;
-        stroke-linecap: round;
-        stroke-linejoin: round;
-
-        stroke-dasharray: var(--length);
-
-        transition: stroke var(--trans-fast);
-    }
-
     .active {
         .stroke {
-            stroke: var(--clr-navIcon-tertiary-active);
             animation: strokeDraw 0.35s ease-out 1;
 
             &.delayed {
