@@ -32,6 +32,9 @@ $light: (
 
     clockBorder: #FFFFFF,
     "white": #FFFFFF,
+
+    outline-am: #0000FF,
+    outline-pm: #BD0000,
 );
 
 // === DARK THEME =========================
@@ -62,4 +65,7 @@ $dark: (
 
     clockBorder: #666666,
     "white": #FFFFFF,
+
+    outline-am: #6161FF,
+    outline-pm: #FF0000,
 );

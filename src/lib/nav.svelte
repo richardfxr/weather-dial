@@ -133,8 +133,43 @@
 
                 transition: border-color var(--trans-fast);
 
+                &:hover, &:focus {
+                    :global {
+                        .navIcon {
+                            .clr {
+                                &-main {
+                                    fill: var(--clr-700);
+                                }
+
+                                &-tertiary {
+                                    fill: var(--clr-1000);
+                                }
+                            }
+
+                            .stroke {
+                                stroke: var(--clr-1000);
+                            }
+                        }
+                    }
+                }
+
+                &:focus-visible {
+                    outline: var(--outline);
+                    outline-offset: calc(-1 * var(--border-thin));
+
+                    &.active {
+                        :global(.navIcon .clr-main) {
+                            fill: var(--clr-outline);
+                        }
+                    }
+                }
+
                 &.active {
                     border-color: var(--clr-accent-800);
+
+                    :global(.navIcon .clr-main) {
+                        fill: var(--clr-navIcon-main-active);
+                    }
                 }
 
                 .iconPH {

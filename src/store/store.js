@@ -66,6 +66,12 @@ hasSelectedPeriod.subscribe((value) => {
     _hasSelectedPeriod = value;
 });
 
+selectedPeriod.subscribe((value) => {
+    if (!browser) return;
+
+    document.documentElement.setAttribute('data-period', value);
+});
+
 hasSelectedDate.subscribe((value) => {
     // update internal variable
     _hasSelectedDate = value;

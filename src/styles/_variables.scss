@@ -26,6 +26,8 @@ $breakpoint-mobile: 650px;
     --border-thin: 1.7px;
     --bradius-circle: 9e5px;
     --bradius-sm: 4px;
+    --outline-default: 2px;
+    --outline: solid var(--outline-default) var(--clr-outline);
 
     --maxWidth: 2000px;
     --twoCol-minWidth: 22em;
@@ -58,6 +60,7 @@ $breakpoint-mobile: 650px;
     --clr-accent-main: var(--clr-am-main);
     --clr-accent-shadow: var(--clr-am-shadow);
     --clr-accent-separator: var(--clr-am-separator);
+    --clr-outline: var(--clr-outline-am);
 
     // nav icon colors
     --clr-navIcon-main: var(--clr-600);
@@ -68,7 +71,7 @@ $breakpoint-mobile: 650px;
     --clr-navIcon-tertiary-active: var(--clr-1000);
 }
 
-:global(.pm) {
+:global([data-period="PM"]) {
     // PM accent colors
     --clr-accent-800: var(--clr-pm-800);
     --clr-accent-700: var(--clr-pm-700);
@@ -76,6 +79,7 @@ $breakpoint-mobile: 650px;
     --clr-accent-main: var(--clr-pm-main);
     --clr-accent-shadow: var(--clr-pm-shadow);
     --clr-accent-separator: var(--clr-pm-separator);
+    --clr-outline: var(--clr-outline-pm);
 
     // nav icon colors
     --clr-navIcon-main-active: var(--clr-accent-800);
@@ -106,10 +110,6 @@ $breakpoint-mobile: 650px;
     @each $name, $value in $light {
         --clr-#{$name}: #{$value};
     }
-
-    // nav icon colors
-    --clr-navIcon-secondary-active: var(--clr-0);
-    --clr-navIcon-tertiary-active: var(--clr-1000);
 }
 
 :global([data-theme="dark"]) {
@@ -118,10 +118,6 @@ $breakpoint-mobile: 650px;
     @each $name, $value in $dark {
         --clr-#{$name}: #{$value};
     }
-
-    // nav icon colors
-    --clr-navIcon-secondary-active: var(--clr-100);
-    --clr-navIcon-tertiary-active: var(--clr-900);
 }
 
 @media (orientation: portrait) {

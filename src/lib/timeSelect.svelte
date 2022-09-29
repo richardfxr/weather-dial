@@ -191,11 +191,18 @@
             }
         }
 
-        input:checked ~ div {
-            border-color: var(--clr-accent-800);
+        input {
+            &:focus-visible ~ div {
+                outline: var(--outline);
+                outline-offset: calc(-1 * var(--border-thin));
+            }
 
-            span.month, span.day {
-                color: var(--clr-1000);
+            &:checked ~ div {
+                border-color: var(--clr-accent-800);
+
+                span.month, span.day {
+                    color: var(--clr-1000);
+                }
             }
         }
     }

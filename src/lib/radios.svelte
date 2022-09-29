@@ -120,7 +120,8 @@
                 border-radius: var(--bradius-sm);
                 background-color: transparent;
 
-                transition: background-color var(--trans-normal);
+                transition: background-color var(--trans-normal),
+                            color var(--trans-normal);
 
                 &::before {
                     // indicator line
@@ -155,14 +156,27 @@
                     right: var(--_inpit-pad-end);
                 }
             }
+
+            &:hover, &:focus {
+                div {
+                    color: var(--clr-1000);
+                }
+            }
         }
 
-        input:checked ~ div {
-            color: var(--clr-1000);
-            background-color: var(--clr-20);
-            
-            &::before {
-                background-color: var(--clr-accent-800);
+        input {
+            &:focus-visible ~ div {
+                outline: var(--outline);
+                outline-offset: calc(-1 * var(--border-thin));
+            }
+
+            &:checked ~ div {
+                color: var(--clr-1000);
+                background-color: var(--clr-20);
+                
+                &::before {
+                    background-color: var(--clr-accent-800);
+                }
             }
         }
     }
