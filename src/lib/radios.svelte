@@ -97,10 +97,10 @@
         animation: delayedFade calc(1.3s + 0.2s * var(--index)) ease 1;
 
         label {
-            --_input-pad-vertical: 6px;
-            --_input-pad-horizontal: 17px;
-            --_inpit-pad-end: 20px;
-            --_bradius-end: calc(var(--fontSize-lg) * 1.63 / 2 + var(--_input-pad-vertical));
+            --_input-pad-vertical: 7px;
+            --_input-pad-horizontal: 1.0625rem;
+            --_inpit-pad-end: 1.25rem;
+            --_bradius-end: calc(var(--fontSize-lg) * 1.3 / 2 + var(--_input-pad-vertical));
 
             div {
                 display: block;
@@ -110,6 +110,7 @@
                 color: var(--clr-900);
                 font-size: var(--fontSize-lg);
                 font-weight: 600;
+                line-height: 1.3em;
 
                 padding:
                     var(--_input-pad-vertical)
