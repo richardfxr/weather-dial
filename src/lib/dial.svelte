@@ -588,4 +588,26 @@
         40% { transform: scale(0.3) rotate(15deg); }
         to { transform: scale(1) rotate(15deg); }
     }
+
+    /* === A11Y =============================== */
+    @media (prefers-reduced-motion) {
+        #dial {
+            #cross,
+            #outerCircle,
+            .clock,
+            .clock__gradient,
+            table #units,
+            table tbody tr td.data {
+                animation: loMoFadeIn var(--loMo-ani);
+            }
+
+            table tbody tr td.data {
+                transition: unset;
+
+                &::before {
+                    transition: unset;
+                }
+            }
+        }
+    }
 </style>

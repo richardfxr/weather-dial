@@ -84,4 +84,21 @@
             transform: translateX(0px);
         }
     }
+
+    /* === A11Y =============================== */
+    @media (prefers-reduced-motion) {
+        .active {
+            .stroke {
+                animation: unset;
+
+                &.delayed {
+                    animation: loMoFade var(--loMo-ani);
+                }
+            }
+
+            .circle {
+                animation: loMoFade calc(0.35s + 0.05s * var(--offset)) ease-out 1;
+            }
+        }
+    }
 </style>

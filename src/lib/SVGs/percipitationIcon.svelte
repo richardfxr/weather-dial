@@ -78,4 +78,23 @@
             transform: translateY(0px);
         }
     }
+
+    /* === A11Y =============================== */
+    @media (prefers-reduced-motion) {
+        .active {
+            .circle {
+                &__top, &__bottom {
+                    animation: loMoFade calc(0.3s + 0.1s * var(--index)) ease-out 1;
+                }
+
+                &__bottom {
+                    animation: loMoFade calc(0.22s + 0.13s * var(--index)) ease-out 1;
+                }
+            }
+
+            .cloud {
+                animation: unset;
+            }
+        } 
+    }
 </style>

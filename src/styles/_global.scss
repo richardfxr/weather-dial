@@ -144,3 +144,27 @@ svg {
     40% { opacity: 0; }
     to { opacity: 1; }
 }
+
+@keyframes loMoFade {
+    from {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes loMoFadeIn {
+    from {
+        opacity: 0;
+    }
+    
+    to {
+        opacity: 1;
+    }
+}

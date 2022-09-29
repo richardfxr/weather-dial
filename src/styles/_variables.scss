@@ -69,6 +69,9 @@ $breakpoint-mobile: 650px;
     --clr-navIcon-main-active: var(--clr-accent-800);
     --clr-navIcon-secondary-active: var(--clr-0);
     --clr-navIcon-tertiary-active: var(--clr-1000);
+
+    /* === A11Y =============================== */
+    --loMo-ani: 0.45s ease-out 1;
 }
 
 :global([data-period="PM"]) {

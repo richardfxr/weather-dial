@@ -43,4 +43,15 @@
             #{$end} {opacity: 1; }
         }
     }
+
+    /* === A11Y =============================== */
+    @media (prefers-reduced-motion) {
+        .active {
+            @for $i from 1 through 10 {
+                circle:nth-child(#{$i}) {
+                    animation: loMoFade var(--loMo-ani);
+                }
+            }
+        }
+    }
 </style>

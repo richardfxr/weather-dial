@@ -57,4 +57,19 @@
             transform: translateY(0px) translateX(0px);
         }
     }
+
+    /* === A11Y =============================== */
+    @media (prefers-reduced-motion) {
+        .active {
+            .cloud {
+                &__top {
+                    animation: loMoFade var(--loMo-ani);
+                }
+
+                &__bottom {
+                    animation: unset;
+                }
+            }
+        }
+    }
 </style>
