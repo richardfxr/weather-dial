@@ -69,3 +69,69 @@ $dark: (
     outline-am: #6161FF,
     outline-pm: #FF0000,
 );
+
+// === LIGHT HC THEME =====================
+$light-hc: (
+    1000: #000000,
+    900: #1A1A1A,
+    700: #595959,
+    600: #595959,
+    100: #FFFFFF,
+    100trans: rgba(226, 217, 212, 0%),
+    50: #F2E8DE,
+    20: #595959,
+    0: #595959,
+
+    am-800: #A82200,
+    am-700: #A82200,
+    am-highlight: #FF7200,
+    am-main: #A82200,
+    am-shadow: #780024,
+    am-separator: rgba(255, 167, 143, 40%),
+
+    pm-800: #1B28CF,
+    pm-700: #1B28CF,
+    pm-highlight: #0083FF,
+    pm-main: #1B28CF,
+    pm-shadow: #200096,
+    pm-separator: rgba(117, 129, 255, 40%),
+
+    clockBorder: #FFFFFF,
+    "white": #FFFFFF,
+
+    outline-am: #0000FF,
+    outline-pm: #BD0000,
+);
+
+// === DARK HC  THEME ======================
+$dark-hc: (
+    1000: #FFFFFF,
+    900: #F7F7F7,
+    700: #a5a5a5,
+    600: #666666,
+    100: #000000,
+    100trans: rgba(0, 0, 0, 0%),
+    50: #F2E8DE,
+    20: #C9C9C9,
+    0: #333333,
+
+    am-800: #FF8D70,
+    am-700: #FF8D70,
+    am-highlight: #4D4D4D,
+    am-main: #1A1A1A,
+    am-shadow: #000000,
+    am-separator: rgba(102, 102, 102, 50%),
+
+    pm-800: #B3B9FF,
+    pm-700: #B3B9FF,
+    pm-highlight: #4D4D4D,
+    pm-main: #1A1A1A,
+    pm-shadow: #000000,
+    pm-separator: rgba(102, 102, 102, 50%),
+
+    clockBorder: #666666,
+    "white": #FFFFFF,
+
+    outline-am: #6161FF,
+    outline-pm: #FF0000,
+);

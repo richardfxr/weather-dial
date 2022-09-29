@@ -183,3 +183,44 @@ $breakpoint-mobile: 650px;
         --border-thin: 1.1px;
     }
 }
+
+
+
+/* ========================================
+    A11Y
+    ======================================== */
+@media (prefers-contrast: more) {
+    :root {
+        /* light hc theme */
+        // parse $light-hc into CSS variables
+        @each $name, $value in $light-hc {
+            --clr-#{$name}: #{$value};
+        }
+    }
+
+    :global([data-theme="dark"]) {
+        /* dark hc theme */
+        // parse $dark-hc into CSS variables
+        @each $name, $value in $dark-hc {
+            --clr-#{$name}: #{$value};
+        }
+    }
+}
+
+@media (prefers-contrast: more) and (prefers-color-scheme: dark) {
+    :root {
+        /* dark hc theme */
+        // parse $dark-hc into CSS variables
+        @each $name, $value in $dark-hc {
+            --clr-#{$name}: #{$value};
+        }
+    }
+
+    :global([data-theme="light"]) {
+        /* light hc theme */
+        // parse $light-hc into CSS variables
+        @each $name, $value in $light-hc {
+            --clr-#{$name}: #{$value};
+        }
+    }
+}

@@ -167,7 +167,7 @@
         input {
             &:focus-visible ~ div {
                 outline: var(--outline);
-                outline-offset: calc(-1 * var(--border-thin));
+                outline-offset: var(--pad-xxxs);
             }
 
             &:checked ~ div {
@@ -228,6 +228,31 @@
 
         .radios {
             justify-content: center;
+        }
+    }
+
+    /* === A11Y =============================== */
+    @media (prefers-contrast: more) {
+        .radios {
+            input {
+                &:checked ~ div {
+                    color: var(--clr-100);
+                    
+                    &::before {
+                        background-color: var(--clr-100);
+                    }
+                }
+            }
+        }
+
+        .accent {
+            .radios label input:checked ~ div {
+                color: var(--clr-100);
+
+                &::before {
+                    background-color: var(--clr-100);
+                }
+            }
         }
     }
 </style>

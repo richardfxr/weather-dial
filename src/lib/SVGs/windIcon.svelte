@@ -101,4 +101,10 @@
             }
         }
     }
+
+    @media (prefers-contrast: more) {
+        .active .stroke {
+            stroke: var(--clr-100);
+        }
+    }
 </style>

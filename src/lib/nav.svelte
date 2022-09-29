@@ -125,6 +125,7 @@
                 display: flex;
                 align-items: center;
                 justify-content: center;
+                position: relative;
                 width: var(--nav-a-size);
                 height: var(--nav-a-size);
 
@@ -170,6 +171,20 @@
                     :global(.navIcon .clr-main) {
                         fill: var(--clr-navIcon-main-active);
                     }
+
+                    &:hover, &:focus {
+                        :global {
+                            .navIcon .clr {
+                                &-main {
+                                    fill: var(--clr-navIcon-main-active);
+                                }
+
+                                &-tertiary {
+                                    fill: var(--clr-navIcon-tertiary-active);
+                                }
+                            }
+                        }
+                    }
                 }
 
                 .iconPH {
@@ -200,6 +215,56 @@
                     height: var(--nav-a-size);
 
                     padding: var(--pad-sm) var(--pad-xs);
+                }
+            }
+        }
+    }
+
+    /* === A11Y =============================== */
+    @media (prefers-contrast: more) {
+        #nav ul a {
+            &::before {
+                // active background circle
+                content: '';
+                position: absolute;
+                top: var(--pad-xxxs);
+                right: var(--pad-xxxs);
+                bottom: var(--pad-xxxs);
+                left: var(--pad-xxxs);
+                z-index: -1;
+
+                background-color: var(--clr-20);
+                border-radius: var(--bradius-circle);
+
+                opacity: 0;
+                transition: opacity var(--trans-normal);
+            }
+            
+            &.active {
+                &:hover, &:focus {
+                    :global {
+                        .navIcon .clr {
+                            &-main {
+                                fill: var(--clr-100);
+                            }
+
+                            &-tertiary {
+                                fill: var(--clr-100);
+                            }
+                        }
+
+                        .stroke {
+                            stroke: var(--clr-100);
+                        }
+                    }
+                }
+
+                &::before {
+                    opacity: 1;
+                }
+
+                :global(.navIcon .clr-main) {
+                    fill: var(--clr-100);
                 }
             }
         }

@@ -162,6 +162,7 @@
                 align-items: center;
                 justify-content: center;
                 gap: var(--pad-xxs);
+                position: relative;
                 width: calc(1.92rem + 34px);
 
                 padding: 1.375rem 0;
@@ -216,6 +217,38 @@
 
         .dateSelect {
             justify-content: center;
+        }
+    }
+    
+    @media (prefers-contrast: more) {
+        .dateSelect {
+            label div::before {
+                // active background circle
+                content: '';
+                position: absolute;
+                top: var(--pad-xxxs);
+                right: var(--pad-xxxs);
+                bottom: var(--pad-xxxs);
+                left: var(--pad-xxxs);
+                z-index: -1;
+
+                background-color: var(--clr-20);
+                border-radius: var(--bradius-circle);
+
+                opacity: 0;
+                transition: opacity var(--trans-normal);
+            }
+
+            input:checked ~ div {
+
+                span.day, span.month {
+                    color: var(--clr-100);
+                }
+
+                &::before {
+                    opacity: 1;
+                }
+            }
         }
     }
 </style>

@@ -168,3 +168,35 @@ svg {
         opacity: 1;
     }
 }
+
+/* === A11Y =============================== */
+@media (prefers-contrast: more) {
+    svg {
+        .clr-bg {
+            transition: fill var(--trans-normal);
+        }
+        &.active {
+            .clr {
+                &-main {
+                    fill: var(--clr-100);
+                }
+
+                &-secondary {
+                    fill: var(--clr-20);
+                }
+
+                &-tertiary {
+                    fill: var(--clr-100);
+                }
+
+                &-indicator {
+                    fill: var(--clr-100);
+                }
+
+                &-bg {
+                    fill: var(--clr-20);
+                }
+            }
+        }
+    }
+}
