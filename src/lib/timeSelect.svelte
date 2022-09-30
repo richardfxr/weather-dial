@@ -171,6 +171,23 @@
 
                 transition: border-color var(--trans-fast);
 
+                &::before {
+                    // active background circle (hidden by default)
+                    content: '';
+                    position: absolute;
+                    top: var(--pad-xxxs);
+                    right: var(--pad-xxxs);
+                    bottom: var(--pad-xxxs);
+                    left: var(--pad-xxxs);
+                    z-index: -1;
+
+                    background-color: var(--clr-20);
+                    border-radius: var(--bradius-circle);
+
+                    opacity: 0;
+                    transition: opacity var(--trans-normal);
+                }
+
                 span {
                     transition: color var(--trans-fast);
 
@@ -219,35 +236,31 @@
             justify-content: center;
         }
     }
-    
+
+    /* === A11Y =============================== */    
     @media (prefers-contrast: more) {
-        .dateSelect {
-            label div::before {
-                // active background circle
-                content: '';
-                position: absolute;
-                top: var(--pad-xxxs);
-                right: var(--pad-xxxs);
-                bottom: var(--pad-xxxs);
-                left: var(--pad-xxxs);
-                z-index: -1;
-
-                background-color: var(--clr-20);
-                border-radius: var(--bradius-circle);
-
-                opacity: 0;
-                transition: opacity var(--trans-normal);
+        .dateSelect input:checked ~ div {
+            &::before {
+                opacity: 1;
             }
 
-            input:checked ~ div {
+            span.day, span.month {
+                color: var(--clr-100);
+            }
+        }
+    }
 
-                span.day, span.month {
-                    color: var(--clr-100);
-                }
+    @media (forced-colors: active) {
+        .dateSelect input:checked ~ div {
+            &::before {
+                background-color: SelectedItem;
+                opacity: 1;
+            }
 
-                &::before {
-                    opacity: 1;
-                }
+            span.day, span.month {
+                color: SelectedItemText;
+                // prevent text background from being set to Canvas
+                forced-color-adjust: none;
             }
         }
     }

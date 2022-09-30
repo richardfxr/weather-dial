@@ -115,4 +115,13 @@
             --_logo-size: 2.4rem;
         }
     }
+
+    /* === A11Y =============================== */
+    @media (forced-colors: active) {
+        #footer .credits {
+            :global(.logo) {
+                fill: CanvasText;
+            }
+        }
+    }
 </style>

@@ -197,12 +197,6 @@
                 &:focus-visible {
                     outline: var(--outline);
                     outline-offset: calc(-1 * var(--border-thin));
-
-                    &.active {
-                        :global(.navIcon .clr-main) {
-                            fill: var(--clr-outline);
-                        }
-                    }
                 }
 
                 &.active {
@@ -317,6 +311,114 @@
                         
                         .stroke {
                             stroke: var(--clr-100);
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    @media (forced-colors: active) {
+        #nav ul a {
+            border-color: LinkText;
+
+            :global {
+                .navIcon {
+                    .clr {
+                        &-main {
+                            fill: LinkText;
+                        }
+                        
+                        &-secondary {
+                            fill: Canvas;
+                        }
+                
+                        &-tertiary {
+                            fill: LinkText;
+                        }
+                
+                        &-bg {
+                            fill: Canvas;
+                        }
+                    }
+                    
+                    .stroke {
+                        stroke: LinkText;
+                    }
+                }
+            }
+
+            &:hover, &:focus {
+                :global {
+                    .navIcon {
+                        .clr {
+                            &-main {
+                                fill: LinkText;
+                            }
+                            
+                            &-secondary {
+                                fill: Canvas;
+                            }
+                    
+                            &-tertiary {
+                                fill: LinkText;
+                            }
+                    
+                            &-bg {
+                                fill: Canvas;
+                            }
+                        }
+                        
+                        .stroke {
+                            stroke: LinkText;
+                        }
+                    }
+                }
+            }
+
+            &.active {
+                border-color: ActiveText;
+
+                :global {
+                    .navIcon {
+                        .clr {
+                            &-main {
+                                fill: ActiveText;
+                            }
+
+                            &-secondary {
+                                fill: Canvas;
+                            }
+                    
+                            &-tertiary {
+                                fill: ActiveText;
+                            }
+                        }
+                        
+                        .stroke {
+                            stroke: ActiveText;
+                        }
+                    }
+                }
+            }
+
+            &:visited {
+                border-color: VisitedText;
+
+                :global {
+                    .navIcon {
+                        .clr {
+                            &-main {
+                                fill: VisitedText;
+                            }
+                    
+                            &-tertiary {
+                                fill: VisitedText;
+                            }
+                        }
+                        
+                        .stroke {
+                            stroke: VisitedText;
                         }
                     }
                 }

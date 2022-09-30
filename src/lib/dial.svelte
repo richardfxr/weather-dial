@@ -317,6 +317,8 @@
             }
 
             tbody tr {
+                --_separator-pad: 9.49%;
+
                 position: absolute;
                 top: 0;
                 right: 0;
@@ -325,21 +327,20 @@
 
                 transform: rotate(calc(var(--hour) * 30deg));
 
-                &:nth-child(-n+6)::before {
+                &:nth-last-child(-n+6)::before {
                     // separator (only first 6 td.data have it)
-                    --_pad: 9.49%;
-
                     content: '';
                     position: absolute;
                     top: 0;
                     right: 0;
                     bottom: 0;
                     left: 0;
+                    z-index: 1;
 
-                    height: calc(100% - 2 * var(--_pad));
+                    height: calc(100% - 2 * var(--_separator-pad));
                     width: var(--border-thin);
 
-                    margin: var(--_pad) auto;
+                    margin: var(--_separator-pad) auto;
 
                     background-color: var(--clr-accent-separator);
 
@@ -606,6 +607,78 @@
 
                 &::before {
                     transition: unset;
+                }
+            }
+        }
+    }
+
+    @media (forced-colors: active) {
+        #dial {
+            #outerCircle {
+                &::before {
+                    border-color: CanvasText;
+                }
+                
+                &::after {
+                    background-color: Canvas;
+                }
+            }
+
+            .clock {
+                background-color: Canvas;
+                border-color: CanvasText;
+
+                &__gradient {
+                    &::after {
+                        // show line to indicate time
+                        display: block;
+                        background-color: CanvasText;
+                    }
+                    
+                    &#clock--PM::before, &#clock--AM::before {
+                        background-color: CanvasText;
+                    }
+                }
+            }
+
+            table tbody tr {
+                --_separator-width: 1%;
+
+                &:nth-last-child(-n+6)::before {
+                    width: var(--_separator-width);
+                    background-color: Canvas;
+                }
+
+                &:last-child::after {
+                    // separator to the right of 11
+                    content: '';
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    z-index: 1;
+
+                    height: calc(100% - 2 * var(--_separator-pad));
+                    width: var(--_separator-width);
+
+                    margin: var(--_separator-pad) auto;
+
+                    background-color: Canvas;
+
+                    transform: rotate(30deg);
+                    transition: background-color var(--trans-normal);
+                    animation: hourFade 0.6s ease 1;
+                }
+
+                td.hour::before {
+                    background-color: CanvasText;
+                }
+
+                td.data::before {
+                    background-image: unset;
+                    background-color: CanvasText;
+                    border-color: CanvasText;
                 }
             }
         }

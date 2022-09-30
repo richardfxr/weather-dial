@@ -304,4 +304,56 @@
             }
         }
     }
+
+    @media (forced-colors: active) {
+        .radios input:checked ~ div,
+        .accent .radios label input:checked ~ div {
+            color: SelectedItemText;
+            background-color: SelectedItem;
+            // prevent text background from being set to Canvas
+            forced-color-adjust: none;
+
+            &::before {
+                background-color: SelectedItemText;
+            }
+        }
+
+        .icons .radios {
+            label {
+                div {
+                    :global {
+                        .icon .clr {
+                            &-tertiary {
+                                fill: CanvasText;
+                            }
+
+                            &-indicator {
+                                fill: Canvas;
+                            }
+                        }
+                    }
+                }
+                
+                &:hover, &:focus div {
+                    :global(.icon .clr-tertiary) {
+                        fill: CanvasText;
+                    }
+                }
+            }
+
+            input:checked ~ div {
+                :global {
+                    .icon .clr {
+                        &-tertiary {
+                            fill: SelectedItemText;
+                        }
+
+                        &-indicator {
+                            fill: SelectedItemText;
+                        }
+                    }
+                }
+            }
+        }
+    }
 </style>
