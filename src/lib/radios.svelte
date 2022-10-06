@@ -12,7 +12,7 @@
     export let hideLabel = false;
 
     /* === VARIABLES ========================== */
-    // let selected = initial;
+    const id = groupName.replace(/\s/g, ''); // groupName without spaces
 
     /* === DISPATCHER ========================= */
     const dispatch = createEventDispatcher();
@@ -23,10 +23,10 @@
     class:accent={groupName === "Period"}
     class:icons={groupName === "Theme"}
     role="radiogroup"
-    aria-labelledby="{groupName}__label"
+    aria-labelledby="{id}__label"
     style="--index: {index};">
     <h2
-        id="{groupName}__label"
+        id="{id}__label"
         class:visuallyHidden={hideLabel}>
         {groupName}
     </h2>
