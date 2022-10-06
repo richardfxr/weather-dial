@@ -36,7 +36,10 @@
             class:inactive={$period !== "AM" || $selectedDate !== 0 || $selectedPeriod !== "AM"}
             style="--timeRotation: {$hours * 30 + ($minutes * 0.5)}deg">
         </div>
-        <table style="--range: {range};">
+        <table
+            aria-live="polite"
+            aria-atomic="true"
+            style="--range: {range};">
             <caption class="visuallyHidden">{title}</caption>
             <thead>
                 <tr>
@@ -46,7 +49,7 @@
             </thead>
             <tbody>
                 {#each dataPoints as dataPoint, index}
-                    <tr 
+                    <tr
                         style="--hour: {index}"
                         aria-current={$hours === index && $selectedPeriod === $period}>
                         <td class="hour">
