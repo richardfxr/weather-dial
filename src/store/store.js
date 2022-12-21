@@ -78,14 +78,11 @@ hasSelectedDate.subscribe((value) => {
 });
 
 hasSelectedTheme.subscribe((value)=> {
-    console.log("updated hasSelectedTheme:", value);
     // updated internal variable
     _hasSelectedTheme = value;
 });
 
 selectedTheme.subscribe((value) => {
-    console.log("selectedTheme:", value);
-    // console.log("hasSelectedTheme:", _hasSelectedTheme);
     // prevent code from running on server or if theme was selected by user
     if (!browser || !_hasSelectedTheme) return;
 
