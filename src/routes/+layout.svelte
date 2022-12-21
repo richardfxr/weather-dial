@@ -9,6 +9,13 @@
 
     /* === VARIABLES ========================== */
     const pageTransDuration = 200;
+
+    /* === CONSOLE LOGS ======================= */
+    console.log("Weather Dial v1.0.0");
+    console.log('\n');
+    console.log("Designed and developed by Richard Fu.");
+    console.log("Code available on GitHub:");
+    console.log("https://github.com/richardfxr/weather-dial");
 </script>
 
 <div 
