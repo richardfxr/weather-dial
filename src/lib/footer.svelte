@@ -30,7 +30,7 @@
         <Logo />
         <div>
             <span class="name">Weather Dial</span>
-            <span class="copyright">© 2022 <a href="https://www.richardfxr.com/" target="_blank" rel="noreferrer">Xiangrui Fu</a></span>
+            <span class="copyright">© 2023 <a href="https://www.richardfxr.com/" target="_blank" rel="noreferrer">Xiangrui Fu</a></span>
         </div>
     </div>
 </footer>
