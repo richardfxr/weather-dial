@@ -18,6 +18,12 @@
     console.log("https://github.com/richardfxr/weather-dial");
 </script>
 
+
+<svelte:head>
+    <meta name="theme-color" content={$selectedTheme === "light" ? "#E2D9D4" : "#000000"} />
+</svelte:head>
+
+
 <div 
     id="root"
     class:pm={$selectedPeriod === "PM"}
