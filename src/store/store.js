@@ -17,7 +17,7 @@ export const day =  writable(1);
 export const units = writable("met");
 export const tempType = writable("actual");
 export const hasSelectedTheme = writable(false);
-export const selectedTheme = writable("light")
+export const selectedTheme = writable("light");
 
 /* === INTERNAL VARIABLES ================= */
 let _hasSelectedPeriod = false;
@@ -109,7 +109,7 @@ tempType.subscribe((value) => {
 /* === CLIENT SIDE INITIALIZATION ========= */
 if (browser) {
     // initial theme
-    if (window.matchMedia("(prefers-color-scheme: dark)") && !_hasSelectedTheme) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches && !_hasSelectedTheme) {
         selectedTheme.set("dark");
     }
 
