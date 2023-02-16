@@ -1,6 +1,6 @@
 {
-	"name": "climate-dial",
-	"version": "1.0.0",
+	"name": "weather-dial",
+	"version": "1.0.1",
 	"private": true,
 	"scripts": {
 		"dev": "vite dev",
