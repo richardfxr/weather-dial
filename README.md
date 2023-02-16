@@ -1,4 +1,4 @@
-[![Weather Dial](designs/weatherDial-GitHub-banner.png)](https://weatherdial.richardfxr.com/)
+[![Weather Dial](designs/WeatherDial-GitHub-banner.png)](https://weatherdial.richardfxr.com/)
 
 ## What is Weather Dial?
 
@@ -54,6 +54,9 @@ This repository is separated into the [designs](https://github.com/richardfxr/we
     │   │
     │   ├── uv
     │   │   └── +page.svelte      UV Index page
+    │   │
+    │   ├── wind
+    │   │   └── +page.svelte      Wind Speed page
     │   │
     │   ├── +layout.svelte        layout file (applied to all pages)
     │   ├── +layout.ts            layout load file
