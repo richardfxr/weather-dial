@@ -4,7 +4,7 @@
 </script>
 
 <svg
-    class="percipitation navIcon"
+    class="precipitation navIcon"
     class:active={active}
     xmlns="http://www.w3.org/2000/svg"
     viewBox="0 0 28 28">

@@ -1,7 +1,7 @@
 <script>
     /* === IMPORTS ============================ */
     import TemperatureIcon from '$lib/SVGs/temperatureIcon.svelte';
-    import PercipitationIcon from '$lib/SVGs/percipitationIcon.svelte';
+    import PrecipitationIcon from '$lib/SVGs/precipitationIcon.svelte';
     import CloudIcon from '$lib/SVGs/cloudIcon.svelte';
     import HumidityIcon from '$lib/SVGs/humidityIcon.svelte';
     import WindIcon from '$lib/SVGs/windIcon.svelte';
@@ -10,7 +10,7 @@
 
     /* === REACTIVE DECLARATIONS ============== */
     $: isHome = $page.url.pathname === "/";
-    $: isPercipitation = $page.url.pathname === "/percipitation";
+    $: isPrecipitation = $page.url.pathname === "/precipitation";
     $: isCloudcover = $page.url.pathname === "/cloud";
     $: isHumidity = $page.url.pathname === "/humidity";
     $: isUv = $page.url.pathname === "/uv";
@@ -33,13 +33,13 @@
         </li>
         <li>
             <a
-                href="/percipitation"
-                id="link__percipitation"
-                class:active={isPercipitation}
-                aria-current={isPercipitation}>
-                <span class="visuallyHidden">Percipitation</span>
+                href="/precipitation"
+                id="link__precipitation"
+                class:active={isPrecipitation}
+                aria-current={isPrecipitation}>
+                <span class="visuallyHidden">Precipitation</span>
                 <div class="iconPH">
-                    <PercipitationIcon active={isPercipitation} />
+                    <PrecipitationIcon active={isPrecipitation} />
                 </div>
             </a>
         </li>

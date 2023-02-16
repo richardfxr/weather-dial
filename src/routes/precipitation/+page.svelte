@@ -40,7 +40,7 @@
 </script>
 
 <svelte:head>
-    <title>Percipitation | Weather Dial</title>
+    <title>Precipitation | Weather Dial</title>
 </svelte:head>
 
 <div class="twoCol">
