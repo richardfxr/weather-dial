@@ -2,7 +2,7 @@
     /* === IMPORTS ============================ */
     import Nav from "../lib/nav.svelte";
     import { fade } from 'svelte/transition';
-    import { selectedPeriod, hasSelectedTheme, selectedTheme, units } from '../store/store.js';
+    import { selectedPeriod, hasSelectedTheme, selectedTheme, units, contrast } from '../store/store.js';
 
     /* === PROP =============================== */
     export let data;
@@ -20,7 +20,11 @@
 
 
 <svelte:head>
-    <meta name="theme-color" content={$selectedTheme === "light" ? "#E2D9D4" : "#000000"} />
+    <meta name="theme-color" content={
+        $selectedTheme === "light" ? 
+            $contrast === "more" ? "#FFFFFF" : "#E2D9D4" : 
+            "#000000"
+    } />
 </svelte:head>
 
 
