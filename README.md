@@ -1,38 +1,76 @@
-# create-svelte
+[![Weather Dial](designs/weatherDial-GitHub-banner.png)](https://weatherdial.richardfxr.com/)
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+## What is Weather Dial?
 
-## Creating a project
+Weather Dial is a [SvelteKit](https://kit.svelte.dev/) weather web application that displays information in a circular barplot. It is currently a demo that does not fetch real data from any API.
 
-If you're seeing this, you've probably already done this step. Congrats!
+View the [production website](https://weatherdial.richardfxr.com/) or [learn more about the project’s design](https://www.richardfxr.com/projects/weatherdial).
+<br>
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+![Weather Dial displayed on three iPhone 14 Pros.](designs/WeatherDial-GitHub-mockup.jpg)
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Technical Overview
 
-## Developing
+Weahter Dial is built using [SvelteKit](https://kit.svelte.dev/) and styled with [Dart Sass](https://sass-lang.com/dart-sass). The production site is deployed using [Vercel](https://vercel.com/).
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Commit Messages
 
-```bash
-npm run dev
+[Commit messages](https://github.com/richardfxr/weather-dial/commits/main) are prefixed with the following labels to make them easier to read:
 
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
-```
+- ♿️A11Y: accessibility
+- 🔧CNFG: configuration
+- 💄CSS: styling (CSS or SCSS)
+- 📐DES: design
+- 📝DOC: documentation
+- 🐛FIX: bug fix
+- 🟠SVLT: Svelte and SvelteKit
+- 🚧WIP: work in progress (broken/partial code)
+- 🎉RLS: new release (main branch merge)
 
-## Building
+## Architecture
 
-To create a production version of your app:
+This repository is separated into the [designs](https://github.com/richardfxr/weather-dial/tree/main/designs), [src](https://github.com/richardfxr/weather-dial/tree/main/src), and [static](https://github.com/richardfxr/weather-dial/tree/main/static) folders, along with a few top-level files. Top-level files such as this `README.md` file are usually configuration or documentation files.
 
-```bash
-npm run build
-```
+    designs
+    ├── WeatherDial-GitHub-banner.png           GitHub banner image
+    ├── WeatherDial-GitHub-mockup.jpg           GitHub mockup image
+    ├── WeatherDial-GitHub-socialPreview.png    GitHub social preview image
+    ├── MachinistsEdge-UIconcepts-1.ai          Illustrator file with all assets (v1)
+    └── MachinistsEdge-UIconcepts-2.ai          Illustrator file with all assets (v2)
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+    src
+    ├── lib                       libaray of all Svelte components
+    │   └── SVGs                  all illustration and icon SVGs
+    │
+    ├── routes                    all Svelte file for different pages of the web app
+    │   ├── cloud
+    │   │   └── +page.svelte      Cloud Cover page
+    │   │
+    │   ├── humidity
+    │   │   └── +page.svelte      Humidity page
+    │   │
+    │   ├── precipitation
+    │   │   └── +page.svelte      Precipitation page
+    │   │
+    │   ├── uv
+    │   │   └── +page.svelte      UV Index page
+    │   │
+    │   ├── +layout.svelte        layout file (applied to all pages)
+    │   ├── +layout.ts            layout load file
+    │   └── +page.svelte          Temperature page
+    │
+    ├── store
+    │   └── store.ts              Svelte stores (state management)
+    │
+    ├── styles                    global styling
+    │   ├── _colors.scss          sass map with all colors
+    │   ├── _global.scss          global styles
+    │   ├── _index.scss           fowards all partial SCSS files in this folder
+    │   ├── _resets.scss          style resets
+    │   └── _variables.scss       CSS & SCSS variables
+    │
+    └── app.html                  main HTML
+    
+    static
+    ├── light-barBG.png           transparent gradient background for circular barplot
+    └── favicon.png               favicon
