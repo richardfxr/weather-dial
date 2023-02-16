@@ -18,6 +18,7 @@ export const units = writable("met");
 export const tempType = writable("actual");
 export const hasSelectedTheme = writable(false);
 export const selectedTheme = writable("light");
+export const contrast = writable("default");
 
 updateDate(); // update all date stores immedietly
 
@@ -99,5 +100,10 @@ if (browser) {
             // set appropriate selectedTheme if user has not manually selected theme
             e.matches ? selectedTheme.set("dark") : selectedTheme.set("light");
         }
+    });
+
+    window.matchMedia("(prefers-contrast: more)").addEventListener("change", e => {
+        // update contrast
+        e.matches ? contrast.set("more") : contrast.set("default");
     });
 };
