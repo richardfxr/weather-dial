@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import { writable } from 'svelte/store';
+import { writable, get } from 'svelte/store';
 
 /* === STORES ============================= */
 // date & time
@@ -18,11 +18,6 @@ export const units = writable("met");
 export const tempType = writable("actual");
 export const hasSelectedTheme = writable(false);
 export const selectedTheme = writable("light");
-
-/* === INTERNAL VARIABLES ================= */
-let _hasSelectedPeriod = false;
-let _hasSelectedDate = false;
-let _hasSelectedTheme = false;
 
 updateDate(); // update all date stores immedietly
 
@@ -45,7 +40,7 @@ function updateDate() {
 
     // set period
     hours24 < 12 || hours24 == 24 ? period.set('AM') : period.set('PM');
-    if (!_hasSelectedPeriod) hours24 < 12 || hours24 == 24 ? selectedPeriod.set('AM') : selectedPeriod.set('PM');
+    if (!get(hasSelectedPeriod)) hours24 < 12 || hours24 == 24 ? selectedPeriod.set('AM') : selectedPeriod.set('PM');
 
     // set hours and minutes (NY time)
     hours.set(hours24 % 12);
@@ -61,30 +56,15 @@ const dateInterval = setInterval(() => {
     updateDate();
 }, 1000);
 
-hasSelectedPeriod.subscribe((value) => {
-    // update internal variable
-    _hasSelectedPeriod = value;
-});
-
 selectedPeriod.subscribe((value) => {
     if (!browser) return;
 
     document.documentElement.setAttribute('data-period', value);
 });
 
-hasSelectedDate.subscribe((value) => {
-    // update internal variable
-    _hasSelectedDate = value;
-});
-
-hasSelectedTheme.subscribe((value)=> {
-    // updated internal variable
-    _hasSelectedTheme = value;
-});
-
 selectedTheme.subscribe((value) => {
     // prevent code from running on server or if theme was selected by user
-    if (!browser || !_hasSelectedTheme) return;
+    if (!browser || !get(hasSelectedTheme)) return;
 
     document.documentElement.setAttribute('data-theme', value);
     localStorage.theme = value;
@@ -109,13 +89,13 @@ tempType.subscribe((value) => {
 /* === CLIENT SIDE INITIALIZATION ========= */
 if (browser) {
     // initial theme
-    if (window.matchMedia("(prefers-color-scheme: dark)").matches && !_hasSelectedTheme) {
+    if (window.matchMedia("(prefers-color-scheme: dark)").matches && !get(hasSelectedTheme)) {
         selectedTheme.set("dark");
     }
 
     // event listeners
     window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", e => {
-        if (!_hasSelectedTheme) {
+        if (!get(hasSelectedTheme)) {
             // set appropriate selectedTheme if user has not manually selected theme
             e.matches ? selectedTheme.set("dark") : selectedTheme.set("light");
         }
